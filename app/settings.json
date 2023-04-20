@@ -1,0 +1,20 @@
+{
+    "router": {
+        "views": "app\/views",
+        "404": "app\/views\/404.html"
+    },
+    "lang": {
+        "default": "en",
+        "tr": "tr",
+        "en": "en"
+    },
+    "database": {
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "leravel"
+    },
+    "admin": {
+        "enabled": "1"
+    }
+}
