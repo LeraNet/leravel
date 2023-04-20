@@ -28,5 +28,5 @@ Admin username and password are in /leravel/admin/account.ini<br>
 If you want to disable admin panel you can disable it from settings.json
 
 ## How can I stay up to date?
-when you enter leravel admin it will check for updates and if it found an update it will remind you to update
+when you enter leravel admin it will check for updates and if it founds an update it will remind you to update
 ![scrrenshot](https://cdn.discordapp.com/attachments/989920686065725490/1098668180479676519/image.png)
