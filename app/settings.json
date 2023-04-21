@@ -9,6 +9,7 @@
         "en": "en"
     },
     "database": {
+        "enabled": "1",
         "host": "localhost",
         "username": "root",
         "password": "",

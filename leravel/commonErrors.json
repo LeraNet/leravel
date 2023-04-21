@@ -3,5 +3,10 @@
         "error" : "preg_match(): Compilation failed: subpattern name must start with a non-digit at offset",
         "file" : "router.php",
         "solution" : "This error is caused by a malformed regular expression your routes.php file. Please don't use subpattern names that start with a number."
+    },
+    {
+        "error" : "Uncaught mysqli_sql_exception: Access denied for user",
+        "file" : "index.php",
+        "solution" : "This error is caused by a wrong database username or password in your settings.json file."
     }
 ]
