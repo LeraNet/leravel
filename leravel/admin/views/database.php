@@ -1,4 +1,20 @@
 <?php
+
+if ($Leravel["settings"]["database"]["enabled"] != "true" && $Leravel["settings"]["database"]["enabled"] != "1") :?>
+    <link rel="stylesheet" href="/?admin&route=css">
+    <?php include "include/header.php" ?>
+    <?php include "include/sidebar.php" ?>
+
+    <div class="content">
+    <h1>Database Manager!</h1>
+    <div class="tab-content">
+        <h3>Database is disabled!</h3>
+        <p>Enable the database in the <a href="/?admin&route=settings">settings</a> to use the database manager.</p>
+    </div>
+    </div>
+<?php
+die();
+endif;
 $conn = $Leravel["conn"];
 
 include "include/toast.php";
@@ -151,7 +167,7 @@ if (isset($_GET["success"])) {
                         $columns = $conn->query("SHOW COLUMNS FROM " . $currenTable);
                         while ($column = $columns->fetch_array()) {
                             echo "<th>" . $column[0] . "</th>";
-                            if($column[0] == "id"){
+                            if ($column[0] == "id") {
                                 $thereIsAnId = true;
                             }
                         }
@@ -169,7 +185,7 @@ if (isset($_GET["success"])) {
                             }
                             echo "<td>" . $value . "</td>";
                         }
-                        if($thereIsAnId == true){
+                        if ($thereIsAnId == true) {
                             echo "<td><a class='btn' href='?admin&route=database&table=" . $currenTable . "&delete=" . $row["id"] . "'>Delete</a></td>";
                         }
                         echo "</tr>";
