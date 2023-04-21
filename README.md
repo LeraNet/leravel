@@ -18,7 +18,8 @@ a very shitty php framework
 3. Download the latest source code from releases
 4. Unzip source code in website directory
 5. Modify app/settings.json
-6. Make a website
+6. Don't forget to change Database.Database Name from settings.json or it won't work
+7. Make a website
 
 ## Leravel Admin
 ![leravel admin screenshot](https://cdn.discordapp.com/attachments/989920686065725490/1098666798129360967/image.png)
