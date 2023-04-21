@@ -4,7 +4,7 @@ function customError($errno, $errstr, $errfile, $errline)
 {
     $solution = null;
 
-    $commonErrors = file_get_contents("leravel/commonErrors.json");
+    $commonErrors = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/commonErrors.json");
     $commonErrors = json_decode($commonErrors, true);
     
     foreach ($commonErrors as $commonError) {
@@ -188,6 +188,15 @@ function customError($errno, $errstr, $errfile, $errline)
     die();
 }
 
+function customShutdown() {
+    $error = error_get_last();
+    if ($error !== NULL) {
+        customError($error["type"], $error["message"], $error["file"], $error["line"]);
+    }
+    die();
+}
+
 set_error_handler("customError");
+register_shutdown_function('customShutdown');
 
 ?>

@@ -11,6 +11,7 @@ $vocabulary = array(
         "default" => "Default Language",
     ),
     "database" => array(
+        "enabled" => "Enabled",
         "host" => "Database Host",
         "username" => "Database Username",
         "password" => "Database Password",
@@ -37,6 +38,7 @@ $syntaxVocabulary = array(
         "default" => "The default language. The default value is \"en\".",
     ),
     "database" => array(
+        "enabled" => "Enable or disable the database. The default value is \"true\" or \"1\".",
         "host" => "The database host. The default value is \"localhost\".",
         "username" => "The database username. The default value is \"root\".",
         "password" => "The database password. The default value is \"\".",
