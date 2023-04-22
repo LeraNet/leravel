@@ -1,7 +1,7 @@
 {
     "router": {
         "views": "app\/views",
-        "404": "app\/views\/404.html"
+        "404": "app\/views\/404.php"
     },
     "lang": {
         "default": "en",
