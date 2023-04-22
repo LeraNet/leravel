@@ -239,14 +239,29 @@ if (isset($_GET["success"])) {
                 <form action="" method="post" class="db_form-veritical" autocomplete="off">
                     <input type="hidden" value="createTable" name="action">
                     <label for="table_name">Name</label><br>
-                    <input type="text" name="table_name" id="table_name"><br>
+                    <input required type="text" name="table_name" id="table_name"><br>
+                    <br>
                     <label for="table_columns">Rows</label><br>
-                    <textarea name="table_columns" id="table_columns" cols="30" rows="10" placeholder="id int 
-name varchar(255) 
-description text"></textarea><br>
+                    <select name="" id="types">
+                        <option value="int">int</option>
+                        <option value="varchar(255)">varchar</option>
+                        <option value="text">text</option>
+                        <option value="date">date</option>
+                        <option value="datetime">datetime</option>
+                    </select>
+                    <button type="button" id="typesadd">Add</button><br>
+                    <br>
+                    <textarea required name="table_columns" id="table_columns" cols="30" rows="10" placeholder="id:int 
+name:varchar(255) 
+description:text"></textarea><br>
                     <input type="submit" value="Create">
                 </form>
             </div>
+            <script>
+                document.querySelector("#typesadd").addEventListener("click", function() {
+                    document.querySelector("#table_columns").value += "\n" + "test:" + document.querySelector("#types").value;
+                })
+            </script>
         <?php else : ?>
             <div class="tab-content">
                 <h2>Select a table!</h2>
