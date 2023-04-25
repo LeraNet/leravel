@@ -13,12 +13,35 @@ if ($route == "") {
     exit;
 }
 
-if ($loggedIn == null && $route != "login" && $route != "captcha") {
-    redirect("login");
-    exit;
+if ($route != "login" && $route != "captcha") {
+    if ($loggedIn == null) {
+        redirect("login");
+        exit;
+    }
+
+    if (!isset($_SESSION["username"]) || !isset($_SESSION["password"])) {
+        session_destroy();
+        redirect("login");
+        exit;
+    }
+
+    $account = parse_ini_file("account.ini");
+    if ($account["username"] != $_SESSION["username"] || $account["password"] != $_SESSION["password"]) {
+        session_destroy();
+        redirect("login");
+        exit;
+    }
 }
 
 switch ($route) {
+    case "lsuccess":
+        if ($loggedIn) {
+            include "views/loginSuccess.php";
+        }else{
+            redirect("login");
+            exit;
+        }
+        break;
     case "login":
         if ($loggedIn) {
             redirect("/");
@@ -26,7 +49,6 @@ switch ($route) {
         }
         include "views/login.php";
         break;
-
     case "captcha":
         include "views/captcha.php";
         break;

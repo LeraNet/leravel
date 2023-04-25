@@ -1,29 +1,13 @@
-<?php 
+<?php
 
 include "include/toast.php";
 
-if(isset($_POST["username"])) {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $captcha = $_POST['captcha'] ?? '';
+toast("Logged in successfully", "success");
 
-    $account = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/account.ini");
-    $adminUsername = $account['username'];
-    $adminPassword = $account['password'];
-
-    if($username == $adminUsername && $password == $adminPassword && $captcha == $_SESSION['captcha']) {
-        $_SESSION['loggedIn'] = true;
-        $_SESSION['username'] = $username;
-        $_SESSION['password'] = $password;
-        redirect("lsuccess");
-        exit;
-    } else {
-        toast("Invalid username or password", "error");
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -90,20 +74,66 @@ if(isset($_POST["username"])) {
             width: 100%;
             max-width: 200px;
         }
-        
+
+        .toast {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 20px;
+            position: fixed;
+            top: -100px;
+            right: 20px;
+            z-index: 9999;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .toast-success {
+            background-color: #d3ffab;
+            border: 1px solid #a3ff7b;
+            border-radius: 4px;
+        }
+
+        .toast-error {
+            background-color: #fd9696;
+            border: 1px solid #ff9999;
+            border-radius: 4px;
+        }
+
+        .toast-info {
+            background-color: #cdedfc;
+            border: 1px solid #b3ebff;
+            border-radius: 4px;
+        }
+
+        .toast-close:hover {
+            background-color: #cccccc;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: #555;
+        }
     </style>
 </head>
+
 <body>
     <h1>Leravel Login</h1>
     <br>
-    <form action="/?admin&route=login" method="post" autocomplete="off">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <div class="captcha">
-            <img src="/?admin&route=captcha" alt="captcha">
-            <input type="text" name="captcha" placeholder="captcha">
-        </div>
-        <input type="submit" value="Login">
-    </form>
+    <p>Logged in successfuly</p>
+    <br>
+    <a href="/?admin&route=/" class="btn btn-primary">Go to admin panel</a>
 </body>
+
 </html>

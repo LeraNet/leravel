@@ -1,5 +1,6 @@
 <?php
 $settings = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/app/settings.json"), true);
+$acoount = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/account.ini");
 require "include/toast.php";
 
 $vocabulary = array(
@@ -54,11 +55,32 @@ if (isset($_GET["success"])) {
 }
 
 if (isset($_POST["action"]) && $_POST["action"] == "save") {
+    $file = $_SERVER["DOCUMENT_ROOT"] . $_POST["file"];
     $data = $_POST["data"];
-    $settings = array_merge($settings, $data);
-    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/app/settings.json", json_encode($settings, JSON_PRETTY_PRINT));
-    header("Location: /?admin&route=settings&success");
-    exit;
+    $type = $_POST["type"];
+    $source = file_get_contents($file);
+
+    if ($type == "json") {
+        $source = json_decode($source, true);
+        foreach ($data as $category => $value) {
+            foreach ($value as $key => $value) {
+                $source[$category][$key] = $value;
+            }
+        }
+        $source = json_encode($source, JSON_PRETTY_PRINT);
+    } else if ($type == "ini") {
+        $source = parse_ini_file($file);
+        foreach ($data as $key => $value) {
+            $source[$key] = $value;
+        }
+        $source = "";
+        foreach ($data as $key => $value) {
+            $source .= $key . " = " . $value . "\n";
+        }
+    }
+
+    file_put_contents($file, $source);
+    header("Location: ?admin&route=settings&success");
 }
 ?>
 <!DOCTYPE html>
@@ -78,12 +100,16 @@ if (isset($_POST["action"]) && $_POST["action"] == "save") {
     <div class="content">
         <h1>Settings</h1>
         <div class="tab-content">
+            <h2>settings.json</h2>
+            <div class="tab-content">
             <?php foreach ($settings as $category => $data) : ?>
                 <div class="tab-pane" id="<?= $category ?>">
                     <h2><?= $categoryVocabulary[$category] ?? $category ?></h2>
                     <form action="" method="post">
                         <input type="hidden" name="action" value="save">
                         <input type="hidden" name="data[<?= $category ?>]" value="">
+                        <input type="hidden" name="file" value="/app/settings.json">
+                        <input type="hidden" name="type" value="json">
                         <table>
                             <?php foreach ($data as $key => $value) : ?>
                                 <tr>
@@ -98,6 +124,31 @@ if (isset($_POST["action"]) && $_POST["action"] == "save") {
                     </form>
                 </div>
             <?php endforeach; ?>
+            </div>
+            <h2>account.ini</h2>
+            <div class="tab-content">
+                <div class="tab-pane" id="account">
+                    <h2>Account</h2>
+                    <form action="?admin&route=settings" method="post">
+                        <input type="hidden" name="action" value="save">
+                        <input type="hidden" name="file" value="/leravel/admin/account.ini">
+                        <input type="hidden" name="type" value="ini">
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td><input type="text" name="data[username]" value="<?= $acoount["username"] ?>"></td>
+                                <td><span class="syntax">The username for the admin panel.</span></td>
+                            </tr>
+                            <tr>
+                                <td>Password</td>
+                                <td><input type="password" name="data[password]" value="<?= $acoount["password"] ?>"></td>
+                                <td><span class="syntax">The password for the admin panel.</span></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <input type="submit" value="Save">
+                    </form>
+                </div>
         </div>
     </div>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/default.min.css">
