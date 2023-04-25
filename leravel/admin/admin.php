@@ -25,7 +25,7 @@ if ($route != "login" && $route != "captcha") {
         exit;
     }
 
-    $account = parse_ini_file("account.ini");
+    $account = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccount.ini");
     if ($account["username"] != $_SESSION["username"] || $account["password"] != $_SESSION["password"]) {
         session_destroy();
         redirect("login");

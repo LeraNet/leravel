@@ -7,7 +7,7 @@ if(isset($_POST["username"])) {
     $password = $_POST['password'] ?? '';
     $captcha = $_POST['captcha'] ?? '';
 
-    $account = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/account.ini");
+    $account = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccount.ini");
     $adminUsername = $account['username'];
     $adminPassword = $account['password'];
 

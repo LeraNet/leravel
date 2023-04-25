@@ -1,6 +1,6 @@
 <?php
 $settings = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/app/settings.json"), true);
-$acoount = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/account.ini");
+$acoount = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/app/adminAccount.ini");
 require "include/toast.php";
 
 $vocabulary = array(
@@ -82,6 +82,13 @@ if (isset($_POST["action"]) && $_POST["action"] == "save") {
     file_put_contents($file, $source);
     header("Location: ?admin&route=settings&success");
 }
+
+$tabs = array(
+    "settings" => "settings.json",
+    "account" => "adminAccount.ini"
+);
+
+$currentTab = $_GET["tab"] ?? "settings";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +98,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "save") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leravel Settings</title>
-    <link rel="stylesheet" href="/?admin&route=css">
+    <link rel="stylesheet" href="/?admin&route=css&<?= time() ?>">
 </head>
 
 <body>
@@ -99,39 +106,49 @@ if (isset($_POST["action"]) && $_POST["action"] == "save") {
     <?php include "include/sidebar.php" ?>
     <div class="content">
         <h1>Settings</h1>
+        <div class="tabs">
+            <?php foreach ($tabs as $tab) : ?>
+                    <a href="?admin&route=settings&tab=<?= $tab ?>" class="tab <?php
+                                                        if ($currentTab == $tab) {
+                                                            echo "active";
+                                                        } ?>"><?= $tab ?></a>
+            <?php endforeach; ?>
+        </div>
         <div class="tab-content">
+            <?php if($currentTab == "settings.json") : ?>
             <h2>settings.json</h2>
             <div class="tab-content">
-            <?php foreach ($settings as $category => $data) : ?>
-                <div class="tab-pane" id="<?= $category ?>">
-                    <h2><?= $categoryVocabulary[$category] ?? $category ?></h2>
-                    <form action="" method="post">
-                        <input type="hidden" name="action" value="save">
-                        <input type="hidden" name="data[<?= $category ?>]" value="">
-                        <input type="hidden" name="file" value="/app/settings.json">
-                        <input type="hidden" name="type" value="json">
-                        <table>
-                            <?php foreach ($data as $key => $value) : ?>
-                                <tr>
-                                    <td><?= $vocabulary[$category][$key] ?? $key ?></td>
-                                    <td><input type="text" name="data[<?= $category ?>][<?= $key ?>]" value="<?= $value ?>"></td>
-                                    <td><span class="syntax"><?= $syntaxVocabulary[$category][$key] ?? "" ?></span></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
-                        <br>
-                        <input type="submit" value="Save">
-                    </form>
-                </div>
-            <?php endforeach; ?>
+                <?php foreach ($settings as $category => $data) : ?>
+                    <div class="tab-pane" id="<?= $category ?>">
+                        <h2><?= $categoryVocabulary[$category] ?? $category ?></h2>
+                        <form action="" method="post">
+                            <input type="hidden" name="action" value="save">
+                            <input type="hidden" name="data[<?= $category ?>]" value="">
+                            <input type="hidden" name="file" value="/app/settings.json">
+                            <input type="hidden" name="type" value="json">
+                            <table>
+                                <?php foreach ($data as $key => $value) : ?>
+                                    <tr>
+                                        <td><?= $vocabulary[$category][$key] ?? $key ?></td>
+                                        <td><input type="text" name="data[<?= $category ?>][<?= $key ?>]" value="<?= $value ?>"></td>
+                                        <td><span class="syntax"><?= $syntaxVocabulary[$category][$key] ?? "" ?></span></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            <br>
+                            <input type="submit" value="Save">
+                        </form>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            <h2>account.ini</h2>
+            <?php elseif($currentTab == "adminAccount.ini") : ?>
+            <h2>adminAccount.ini</h2>
             <div class="tab-content">
                 <div class="tab-pane" id="account">
                     <h2>Account</h2>
                     <form action="?admin&route=settings" method="post">
                         <input type="hidden" name="action" value="save">
-                        <input type="hidden" name="file" value="/leravel/admin/account.ini">
+                        <input type="hidden" name="file" value="/app/adminAccount.ini">
                         <input type="hidden" name="type" value="ini">
                         <table>
                             <tr>
@@ -149,10 +166,22 @@ if (isset($_POST["action"]) && $_POST["action"] == "save") {
                         <input type="submit" value="Save">
                     </form>
                 </div>
+            </div>
+            <?php else : ?>
+            <h2>404</h2>
+            <div class="tab-content">
+                <div class="tab-pane" id="404">
+                    <h2>404</h2>
+                    <p>The page you are looking for does not exist.</p>
+                </div>
+
+            </div>
+            <?php endif; ?>
         </div>
-    </div>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/default.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
+
+
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/default.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js"></script>
 </body>
 
 </html>

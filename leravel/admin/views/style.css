@@ -5,6 +5,7 @@ body {
     line-height: 1.42857143;
     color: #333;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 header {
@@ -456,4 +457,22 @@ button {
     cursor: pointer;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    padding: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
