@@ -8,5 +8,10 @@
         "error" : "Uncaught mysqli_sql_exception: Access denied for user",
         "file" : "index.php",
         "solution" : "This error is caused by a wrong database username or password in your settings.json file."
+    },
+    {
+        "error" : "parse_ini_file(",
+        "file" : "\\admin\\admin.php",
+        "solution" : "<b>account.ini</b> moved into <b>/app/adminAccount.ini</b><br>For more info : <a href='https://github.com/lera2od/leravel/releases/tag/1.3'>leravel v1.3 changelog</a>"
     }
 ]
