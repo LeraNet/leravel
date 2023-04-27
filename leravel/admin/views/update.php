@@ -55,7 +55,7 @@ if(isset($_GET["success"])) {
     <?php include "include/header.php" ?>
     <?php include "include/sidebar.php" ?>
     <div class="content">
-        <h1>Update</h1>
+        <h1><img src="<?= $icons["update"]?>">Update</h1>
         <div class="tab-content">
             <?php if (isset($latestVersion)) : ?>
                 <h1>Leravel v<?= $leravelVersion ?></h1>
