@@ -23,6 +23,13 @@ $leravelVersion = $leravelInfo["version"];
 
     $latestVersion = $data["tag_name"];
     $latestVersion = str_replace("v", "", $latestVersion);
+
+if(isset($_GET["update"]) && $_GET["update"] == "true"){
+    if($latestVersion > $leravelVersion){
+        $_SESSION["Update"] = true;
+        header("Location: /?update");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +57,7 @@ $leravelVersion = $leravelInfo["version"];
                         <h2>Update logs</h2>
                         <pre><code class="json"><?= $data["body"] ?></code></pre>
                     </div>
-                    <a href="//github.com/lera2od/leravel/releases/latest" target="_blank" class="btn">Download</a>
+                    <a href="/?admin&route=update&update=true" class="btn">Download</a>
                 <?php } else { ?>
                     <p>You are up to date!</p>
                 <?php } ?>

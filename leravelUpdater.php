@@ -21,6 +21,24 @@ $data = json_decode($response, true);
 
 $latestVersion = $data["tag_name"];
 $latestVersion = str_replace("v", "", $latestVersion);
+
+if(isset($_GET["update"]) && $_GET["update"] == "true"){
+    if($latestVersion > $leravelVersion){
+        $zip = file_get_contents($data["assets"][0]["browser_download_url"]);
+        file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel.zip", $zip);
+        $zip = new ZipArchive;
+        $res = $zip->open($_SERVER["DOCUMENT_ROOT"] . "/leravel.zip");
+        if ($res === TRUE) {
+            $zip->extractTo($_SERVER["DOCUMENT_ROOT"] . "/leravel");
+            $zip->close();
+            unlink($_SERVER["DOCUMENT_ROOT"] . "/leravel.zip");
+            $_SESSION["Update"] = true;
+            header("Location: /?update");
+        } else {
+            echo 'failed';
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +54,7 @@ $latestVersion = str_replace("v", "", $latestVersion);
 <body>
     <header>
         <a href="/?admin">
-            <h1><img src="<?= $icons["admin"] ?>">leravel admin</h1>
+            <h1>leravel admin</h1>
         </a>
         <div>
             <a href="/?admin&route=logout">Logout</a>
@@ -44,11 +62,11 @@ $latestVersion = str_replace("v", "", $latestVersion);
     </header>
     <div class="sidebar">
         <ul>
-            <li><a href="/?admin&route=/"><img src="<?= $icons["home"] ?>">Home</a></li>
-            <li><a href="/?admin&route=database"><img src="<?= $icons["database"] ?>">Database</a></li>
-            <li><a href="/?admin&route=localization"><img src="<?= $icons["localization"] ?>">Localization</a></li>
-            <li><a href="/?admin&route=settings"><img src="<?= $icons["settings"] ?>">Settings</a></li>
-            <li><a href="/?admin&route=update"><img src="<?= $icons["update"] ?>">Update</a></li>
+            <li><a href="/?admin&route=/">Home</a></li>
+            <li><a href="/?admin&route=database">Database</a></li>
+            <li><a href="/?admin&route=localization">Localization</a></li>
+            <li><a href="/?admin&route=settings">Settings</a></li>
+            <li><a href="/?admin&route=update">Update</a></li>
         </ul>
     </div>
 
@@ -75,22 +93,13 @@ $latestVersion = str_replace("v", "", $latestVersion);
     <div class="content">
         <h1>Update</h1>
         <div class="tab-content">
-            <?php if (isset($latestVersion)) : ?>
-                <h1>Leravel v<?= $leravelVersion ?></h1>
-                <p>Current version: <?= $leravelVersion ?></p>
-                <p>Latest version: <?= $latestVersion ?></p>
-                <?php if ($latestVersion > $leravelVersion) { ?>
-                    <div class="update-logs">
-                        <h2>Update logs</h2>
-                        <pre><code class="json"><?= $data["body"] ?></code></pre>
-                    </div>
-                    <a href="//github.com/lera2od/leravel/releases/latest" target="_blank" class="btn">Download</a>
-                <?php } else { ?>
-                    <p>You are up to date!</p>
-                <?php } ?>
-            <?php else : ?>
-                <p>Unable to fetch latest version</p>
-            <?php endif; ?>
+            <h2>Are you sure you want to update?</h2>
+            <p>Current Version: <?php echo $leravelVersion ?></p>
+            <p>Latest Version: <?php echo $latestVersion ?></p>
+            <form action="" method="post">
+                <input type="hidden" name="update" value="true">
+                <button type="submit">Update</button>
+            </form>
         </div>
     </div>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/default.min.css">
