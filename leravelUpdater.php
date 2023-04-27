@@ -22,7 +22,7 @@ $data = json_decode($response, true);
 $latestVersion = $data["tag_name"] ?? "GitHub API Rate Limit Exceeded";
 $latestVersion = str_replace("v", "", $latestVersion);
 
-if (isset($_GET["update"]) && $_GET["update"] == "true") {
+if (isset($_POST["update"]) && $_POST["update"] == "true") {
     $zip = file_get_contents($data["assets"][1]["browser_download_url"]);
     file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel.zip", $zip);
     $zip = new ZipArchive;
