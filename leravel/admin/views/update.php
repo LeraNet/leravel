@@ -33,7 +33,7 @@ if(isset($_GET["update"]) && $_GET["update"] == "true"){
 
 if(isset($_GET["success"])) {
     if($_SESSION["Update"] == false){
-        toast("Update Success", "success");
+        toast("Update Complated", "success");
     } else {
         toast("Update Failed", "error");
     }
