@@ -55,7 +55,7 @@ class Router
             require "admin/admin.php";
             return;
         }
-        if(strpos($uri, "?update") !== false && $_SESSION["loggedIn"] == true && $Leravel["settings"]["admin"]["enabled"] == true && $_SESSION["Update"] == true){
+        if(strpos($uri, "?update") !== false && isset($_SESSION["loggedIn"]) && isset($_SESSION["Update"]) && $_SESSION["loggedIn"] == true && $Leravel["settings"]["admin"]["enabled"] == true && $_SESSION["Update"] == true){
             require $_SERVER['DOCUMENT_ROOT'] . "/leravelUpdater.php";
             return;
         }

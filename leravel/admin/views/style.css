@@ -47,7 +47,7 @@ header a {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto;
-    border-right: 1px solid #000000;
+    border-right: 1px solid #8b8b8b;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     flex-direction: column;
     width: 200px;
