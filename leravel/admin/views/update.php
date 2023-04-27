@@ -30,6 +30,15 @@ if(isset($_GET["update"]) && $_GET["update"] == "true"){
         header("Location: /?update");
     }
 }
+
+if(isset($_GET["success"])) {
+    if($_SESSION["Update"] == false){
+        toast("Update Success", "success");
+    } else {
+        toast("Update Failed", "error");
+    }
+    $_SESSION["Update"] = null;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

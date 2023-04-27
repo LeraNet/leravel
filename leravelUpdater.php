@@ -32,7 +32,7 @@ if (isset($_POST["update"]) && $_POST["update"] == "true") {
         $zip->close();
         unlink($_SERVER["DOCUMENT_ROOT"] . "/leravel.zip");
         $_SESSION["Update"] = false;
-        header("Location: /?admin");
+        header("Location: /?admin&route=update&success");
     } else {
         echo 'failed';
     }
