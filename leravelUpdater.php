@@ -24,12 +24,12 @@ $latestVersion = str_replace("v", "", $latestVersion);
 
 if(isset($_GET["update"]) && $_GET["update"] == "true"){
     if($latestVersion > $leravelVersion){
-        $zip = file_get_contents($data["assets"][0]["browser_download_url"]);
+        $zip = file_get_contents($data["assets"][1]["browser_download_url"]);
         file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel.zip", $zip);
         $zip = new ZipArchive;
         $res = $zip->open($_SERVER["DOCUMENT_ROOT"] . "/leravel.zip");
         if ($res === TRUE) {
-            $zip->extractTo($_SERVER["DOCUMENT_ROOT"] . "/leravel");
+            $zip->extractTo($_SERVER["DOCUMENT_ROOT"] . "/");
             $zip->close();
             unlink($_SERVER["DOCUMENT_ROOT"] . "/leravel.zip");
             $_SESSION["Update"] = true;
