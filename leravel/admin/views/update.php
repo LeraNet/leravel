@@ -57,7 +57,8 @@ if(isset($_GET["update"]) && $_GET["update"] == "true"){
                         <h2>Update logs</h2>
                         <pre><code class="json"><?= $data["body"] ?></code></pre>
                     </div>
-                    <a href="/?admin&route=update&update=true" class="btn">Download</a>
+                    <a href="/?admin&route=update&update=true" class="btn">Update Using Leravel Updater</a>
+                    <a href="<?= $data["html_url"] ?>" class="btn">Update Manually</a>
                 <?php } else { ?>
                     <p>You are up to date!</p>
                 <?php } ?>
