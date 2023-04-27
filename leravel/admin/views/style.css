@@ -27,7 +27,8 @@ header h1 {
     font-size: 18px;
     font-weight: 300;
     margin: 0 20px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
 }
 
 header a {
@@ -71,6 +72,14 @@ header a {
     padding: 10px 20px;
     border-radius: 15px;
     transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
 }
 
 .sidebar ul li a:hover {
@@ -83,6 +92,34 @@ header a {
     padding: 20px;
     margin-left: 250px;
     min-height: calc(100% - 50px);
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+h1 img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+h2 img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }
 
 .mobile-sidebar {
@@ -165,7 +202,7 @@ header a {
     border-bottom: 0;
     border-radius: 4px 4px 0 0;
     color: #333;
-    display: inline-block;
+    display: flex;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.42857143;
@@ -177,6 +214,14 @@ header a {
     cursor: pointer;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 .tabs .tab:hover {

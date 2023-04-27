@@ -105,12 +105,12 @@ $currentTab = $_GET["tab"] ?? "settings";
     <?php include "include/header.php" ?>
     <?php include "include/sidebar.php" ?>
     <div class="content">
-        <h1>Settings</h1>
+        <h1><img src="<?= $icons["settings"]?>">Settings</h1>
         <div class="tabs">
             <?php foreach ($tabs as $tab) : ?>
                     <a href="?admin&route=settings&tab=<?= $tab ?>" class="tab <?php
                                                         if ($currentTab == $tab) {
-                                                            echo "active";
+                                                            echo "tab-active";
                                                         } ?>"><?= $tab ?></a>
             <?php endforeach; ?>
         </div>
@@ -168,14 +168,7 @@ $currentTab = $_GET["tab"] ?? "settings";
                 </div>
             </div>
             <?php else : ?>
-            <h2>404</h2>
-            <div class="tab-content">
-                <div class="tab-pane" id="404">
-                    <h2>404</h2>
-                    <p>The page you are looking for does not exist.</p>
-                </div>
-
-            </div>
+            <h2>Select a file</h2>
             <?php endif; ?>
         </div>
 

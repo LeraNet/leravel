@@ -103,7 +103,7 @@ if(isset($_GET["error"])) {
     <?php include "include/header.php" ?>
     <?php include "include/sidebar.php" ?>
     <div class="content">
-        <h1>Localization Manager!</h1>
+        <h1><img src="<?= $icons["localization"] ?>" draggable="false">Localization Manager!</h1>
         <div class="tabs">
             <a href='?admin&route=localization&default' class='tab '>#</a>
             <?php
@@ -113,9 +113,9 @@ if(isset($_GET["error"])) {
                     continue;
                 }
                 if(isset($_GET["language"]) && $ll == $_GET["language"]) {
-                    echo "<a href='?admin&route=localization&language=$ll' class='tab tab-active'>$ll</a>";
+                    echo "<a href='?admin&route=localization&language=$ll' class='tab tab-active'><img src='$icons[language]'>$ll</a>";
                 } else {
-                    echo "<a href='?admin&route=localization&language=$ll' class='tab'>$ll</a>";
+                    echo "<a href='?admin&route=localization&language=$ll' class='tab'><img src='$icons[language]'>$ll</a>";
                 }
             }
             ?>

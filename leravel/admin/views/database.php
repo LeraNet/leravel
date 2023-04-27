@@ -1,19 +1,19 @@
 <?php
 
-if ($Leravel["settings"]["database"]["enabled"] != "true" && $Leravel["settings"]["database"]["enabled"] != "1") :?>
+if ($Leravel["settings"]["database"]["enabled"] != "true" && $Leravel["settings"]["database"]["enabled"] != "1") : ?>
     <link rel="stylesheet" href="/?admin&route=css">
     <?php include "include/header.php" ?>
     <?php include "include/sidebar.php" ?>
 
     <div class="content">
-    <h1>Database Manager!</h1>
-    <div class="tab-content">
-        <h3>Database is disabled!</h3>
-        <p>Enable the database in the <a href="/?admin&route=settings">settings</a> to use the database manager.</p>
-    </div>
+        <h1>Database Manager!</h1>
+        <div class="tab-content">
+            <h3>Database is disabled!</h3>
+            <p>Enable the database in the <a href="/?admin&route=settings">settings</a> to use the database manager.</p>
+        </div>
     </div>
 <?php
-die();
+    die();
 endif;
 $conn = $Leravel["conn"];
 
@@ -122,21 +122,21 @@ if (isset($_GET["success"])) {
     <?php include "include/header.php" ?>
     <?php include "include/sidebar.php" ?>
     <div class="content">
-        <h1>Database Manager!</h1>
+        <h1><img src='<?= $icons["database"]?>' draggable="false">Database Manager!</h1>
         <div class="tabs">
             <?php
             while ($table = $tables->fetch_array()) {
                 if ($table[0] == $currenTable) {
-                    echo "<a href='?admin&route=database&table=" . $table[0] . "' class='tab tab-active'>" . $table[0] . "</a><br>";
+                    echo "<a href='?admin&route=database&table=" . $table[0] . "' class='tab tab-active'><img src='$icons[table]' >" . $table[0] . "</a><br>";
                 } else
-                    echo "<a href='?admin&route=database&table=" . $table[0] . "' class='tab'>" . $table[0] . "</a><br>";
+                    echo "<a href='?admin&route=database&table=" . $table[0] . "' class='tab'><img src='$icons[table]' >" . $table[0] . "</a><br>";
             }
             ?>
             <a href="?admin&route=database&tablecreate=1" class="tab">+</a>
         </div>
         <?php if ($currenTable != null) : ?>
             <div class="tab-content">
-                <h2><?php echo $currenTable; ?></h2>
+                <h2><img src="<?= $icons["table"] ?>" alt=""><?php echo $currenTable; ?></h2>
                 <form action="" method="post" class="db_form" autocomplete="off">
                     <input type="hidden" value="create" name="action">
                     <?php
@@ -146,7 +146,7 @@ if (isset($_GET["success"])) {
                         "varchar" => "text",
                         "text" => "textarea",
                         "date" => "date",
-                        "datetime" => "datetime-local"
+                        "datetime" => "datetime-local",
                     ];
 
                     while ($column = $columns->fetch_array()) {
@@ -248,6 +248,20 @@ if (isset($_GET["success"])) {
                         <option value="text">text</option>
                         <option value="date">date</option>
                         <option value="datetime">datetime</option>
+                        <option value="">-------------------------</option>
+                        <option value="float">float</option>
+                        <option value="double">double</option>
+                        <option value="decimal">decimal</option>
+                        <option value="boolean">boolean</option>
+                        <option value="tinyint">tinyint</option>
+                        <option value="smallint">smallint</option>
+                        <option value="bigint">bigint</option>
+                        <option value="timestamp">timestamp</option>
+                        <option value="time">time</option>
+                        <option value="binary">binary</option>
+                        <option value="varbinary">varbinary</option>
+                        <option value="blob">blob</option>
+                        <option value="json">json</option>
                     </select>
                     <button type="button" id="typesadd">Add</button><br>
                     <br>

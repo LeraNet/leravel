@@ -8,6 +8,17 @@ function redirect($path)
 $loggedIn = $_SESSION['loggedIn'] ?? false;
 $route = $_GET['route'] ?? "";
 
+$icons = array(
+    "admin" => "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
+    "database" => "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
+    "localization" => "https://img.icons8.com/?size=512&id=9m2yplxz2fr3&format=png",
+    "settings" => "https://img.icons8.com/?size=512&id=s5NUIabJrb4C&format=png",
+    "update" => "https://img.icons8.com/?size=512&id=dkvPGMU3MKpu&format=png",
+    "table" => "https://img.icons8.com/?size=512&id=KZHjwwenS7oK&format=png",
+    "language" => "https://img.icons8.com/?size=512&id=mEjjp0oFPnvc&format=png",
+    "home" => "https://img.icons8.com/?size=512&id=wFfu6zXx15Yk&format=png",
+);
+
 if ($route == "") {
     redirect("/");
     exit;
