@@ -20,6 +20,9 @@ $vocabulary = array(
     ),
     "admin" => array(
         "enabled" => "Enabled",
+    ),
+    "stats" => array(
+        "enabled" => "Enabled",
     )
 );
 
@@ -27,7 +30,8 @@ $categoryVocabulary = array(
     "router" => "Router",
     "lang" => "Language",
     "database" => "Database",
-    "admin" => "Admin Panel"
+    "admin" => "Admin Panel",
+    "stats" => "Statistics"
 );
 
 $syntaxVocabulary = array(
@@ -47,6 +51,9 @@ $syntaxVocabulary = array(
     ),
     "admin" => array(
         "enabled" => "Enable or disable the admin panel. The default value is \"true\" or \"1\"."
+    ),
+    "stats" => array(
+        "enabled" => "Enable or disable the statistics. The default value is \"true\" or \"1\"."
     )
 );
 

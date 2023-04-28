@@ -17,6 +17,7 @@ $icons = array(
     "table" => "https://img.icons8.com/?size=512&id=KZHjwwenS7oK&format=png",
     "language" => "https://img.icons8.com/?size=512&id=mEjjp0oFPnvc&format=png",
     "home" => "https://img.icons8.com/?size=512&id=wFfu6zXx15Yk&format=png",
+    "stats" => "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
 );
 
 if ($route == "") {
@@ -62,6 +63,14 @@ switch ($route) {
         break;
     case "captcha":
         include "views/captcha.php";
+        break;
+    case "stats":
+        if ($loggedIn) {
+            include "views/stats.php";
+        } else {
+            redirect("login");
+            exit;
+        }
         break;
     case "logout":
         session_destroy();

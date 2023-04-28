@@ -33,3 +33,4 @@ require "template.php";
 require "asset.php";
 require "router.php";
 require "extra.php";
+require "stats.php";

@@ -17,5 +17,8 @@
     },
     "admin": {
         "enabled": "1"
+    },
+    "stats": {
+        "enabled": "1"
     }
 }
