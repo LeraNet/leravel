@@ -5,6 +5,10 @@ $Router->get("/", function () {
     template("index.php");
 });
 
+$Router->get("/test", function () {
+    view("test.php");
+});
+
 $Router->get("/dynamic/{id}/{xd}", function ($args) {
     echo $args["id"] . " " . $args["xd"];
 });

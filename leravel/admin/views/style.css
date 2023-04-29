@@ -339,6 +339,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     border: 1px solid #cccccc;
+    box-shadow: 0 0 10px #cccccc;
 }
 
 th, td {
@@ -521,4 +522,87 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.alert {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 20px;
+    padding-top: 10px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-success {
+    background-color: #d3ffab;
+    border: 1px solid #a3ff7b;
+    border-radius: 4px;
+}
+
+.alert-error {
+    background-color: #fd9696;
+    border: 1px solid #ff9999;
+    border-radius: 4px;
+}
+
+.alert-info {
+    background-color: #cdedfc;
+    border: 1px solid #b3ebff;
+    border-radius: 4px;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffec99;
+    border-radius: 4px;
+}
+
+.alert-success .btn {
+    background-color: #a3ff7b;
+    border: 1px solid #a3ff7b;
+    border-radius: 4px;
+    color: #333;
+}
+
+.alert-error .btn {
+    background-color: #ff9999;
+    border: 1px solid #ff9999;
+    border-radius: 4px;
+    color: #333;
+}
+
+.alert-info .btn {
+    background-color: #b3ebff;
+    border: 1px solid #b3ebff;
+    border-radius: 4px;
+    color: #333;
+}
+
+.alert-warning .btn {
+    background-color: #ffec99;
+    border: 1px solid #ffec99;
+    border-radius: 4px;
+    color: #333;
+}
+
+.alert div h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.alert div p {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+canvas {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin: 20px;
+    box-shadow: 0 0 10px #cccccc;
 }

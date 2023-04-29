@@ -51,8 +51,12 @@ function getOs($agent) {
     }
 }
 $uri = $_SERVER["REQUEST_URI"];
-if (strpos($uri, "?admin") == false || $Leravel["settings"]["admin"]["enabled"] != true) {
+if (strpos($uri, "?admin") == false && strpos($uri, "?update") == false) {
+
 if($uri == "/favicon.ico") return;
+
+if($_SERVER["REMOTE_ADDR"] == "127.0.0.1") return;
+
 $stats[] = [
     "url" => $_SERVER["REQUEST_URI"],
     "ip" => $_SERVER["REMOTE_ADDR"],

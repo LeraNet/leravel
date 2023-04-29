@@ -103,9 +103,9 @@ function view($view, $data = [])
     extract($data);
     if (is_array($view)) {
         foreach ($view as $v) {
-            require $Leravel["settings"]["router"]["views"] . "/$v.php";
+            require $Leravel["settings"]["router"]["views"] . "/$v";
         }
     } else {
-        require $Leravel["settings"]["router"]["views"] . "/$view.php";
+        require $Leravel["settings"]["router"]["views"] . "/$view";
     }
 }
