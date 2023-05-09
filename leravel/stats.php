@@ -11,6 +11,10 @@ if(isset($leraveljson["statWeek"]) && $leraveljson["statWeek"] == date("W")) {
     $week = date("W");
     $year = date("Y");
     $file = $_SERVER["DOCUMENT_ROOT"] . "/app/stats/" . $week . "-" . $year . ".json";
+    if(!is_dir($_SERVER["DOCUMENT_ROOT"] . "/app/stats/")) {
+        mkdir($_SERVER["DOCUMENT_ROOT"] . "/app/stats/");
+    }
+    fopen($file,"w");
     file_put_contents($file, json_encode($stats));
     file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/app/stats.json", json_encode(array()));
     $leraveljson["statWeek"] = date("W") + 1;
