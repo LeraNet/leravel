@@ -1,5 +1,9 @@
 <?php 
 
+if(!file_exists($_SERVER["DOCUMENT_ROOT"] . "/app/stats.json")) {
+    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/app/stats.json", json_encode(array()));
+}
+
 $stats = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/app/stats.json"), true);
 $leraveljson = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/leravel.json"), true);
 
