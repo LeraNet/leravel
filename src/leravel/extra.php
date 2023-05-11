@@ -17,3 +17,12 @@ function input($key) {
         return null;
     }
 }
+
+function better_is_null($var) {
+    $var = $var ?? null;
+    if($var == null) {
+        return true;
+    }else{
+        return false;
+    }
+}
