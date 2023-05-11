@@ -470,11 +470,13 @@ legend {
 }
 
 .update-logs {
-    background-color: #ffffff;
+    background-color: #dfffde;
     border: 1px solid #cccccc;
     border-radius: 4px;
     padding: 20px;
     margin: 20px;
+    font-family: monospace;
+    padding-top: 0;
 }
 
 .newVersionReminderBanner {
