@@ -1,7 +1,5 @@
-leravel/leravel.json
-app/settings.json
+src/app/settings.json
 README.md
-app/stats.json
-leravel/admin/statRenders
-leravel/leravel.json
+src/app/stats.json
+src/leravel/admin/statRenders
 .gitignore
