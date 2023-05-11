@@ -1,33 +1,34 @@
 ![Leravel Logo+](https://cdn.discordapp.com/attachments/989920686065725490/1097604721369423953/leravellogo.png)
 # leravel
-Worst php framework
 
-## What is leravel?
-a very shitty php framework
+Leravel is a PHP framework that claims to have cool features like a router, template system, built-in admin panel, localization system, and being lightweight.
 
 ## Features
-- 🧻 A very cool router
-- 📜 A very cool template system(blade wannabe template system 💀)
-- 🔨 A built in admin panel
-- 💬 A built in localization system
-- 🥋 Lightweight i think
+- 🧻 A cool router.
+- 📜 A template system similar to Blade.
+- 🔨 A built-in admin panel.
+- 💬 A built-in localization system.
+- 👨‍💻 A built-in CLI system.
+- 💹 A built in website stats system .
+- 🥋 Lightweight (I think).
 
 ## Getting Started
-1. Download a php server software (I recommend laragon)
-2. Create a new website
-3. Download the latest source code from releases
-4. Unzip source code in website directory
-5. Modify app/settings.json
-6. Don't forget to change Database.Database Name from settings.json or it won't work
-7. Make a website
+To get started with Leravel, follow these steps:
+
+0. Leravel needs gd extention for its captcha.
+1. Download the latest Leravel release from the releases(Download leravelApp.zip)
+2. Extract the leravel app elsewhere.
+3. At the default leravel tries to connect to a MySQL server. If you dont have a MySQL server. Disable the default connection in the `app/settings.json` file.
+4. Run cli.bat or cli.sh.
+5. Type `>start` to start your web application.
+6. In order to use the admin panel you need to go to `http://localhost:8000?admin` not `/admin` `?admin`
 
 ## Leravel Admin
 ![leravel admin screenshot](https://cdn.discordapp.com/attachments/989920686065725490/1098666798129360967/image.png)
-<br>
-To get to the leravel admin you need to go to /?admin<br>
-Admin username and password are in /leravel/admin/account.ini<br>
-If you want to disable admin panel you can disable it from settings.json
 
-## How can I stay up to date?
-when you enter leravel admin it will check for updates and if it founds an update it will remind you to update
-![scrrenshot](https://cdn.discordapp.com/attachments/989920686065725490/1098668180479676519/image.png)
+To access the Leravel admin, go to `/?admin` on your website. The admin username and password can be found in `/leravel/admin/account.ini`. If you want to disable the admin panel, you can do so from `settings.json`.
+
+## Staying Up-to-Date
+When you enter the Leravel admin, it will check for updates. If an update is found, it will remind you to update.
+
+![update screenshot](https://cdn.discordapp.com/attachments/989920686065725490/1098668180479676519/image.png)
