@@ -44,13 +44,33 @@ function waitForInput()
     if ($command == "!") {
         startText();
     } else {
-        if(!file_exists("commands/" . $args[0] . ".php")){
-            printlog($titleColor->getColoredString("                          Leravel CLI                          "));
-            printlog($warningColor->getColoredString("WARNING : Command not found! \nFor the list of commands use the \"help\" command!"));
-        }else{
+        $success = false;
+
+        if (file_exists("commands/" . $args[0] . ".php")) {
             printlog($titleColor->getColoredString("                          Leravel CLI                          "));
             printlog($titleColor->getColoredString("                                                               "));
             include "commands/" . $args[0] . ".php";
+            $success = true;
+        }
+        if ($success == false) {
+            $folders = glob("commands/*", GLOB_ONLYDIR);
+            foreach ($folders as $folder) {
+                $folder = basename($folder);
+                if (!file_exists("commands/$folder/" . $args[0] . ".php")) {
+                    continue;
+                } else {
+                    printlog($titleColor->getColoredString("                          Leravel CLI                          "));
+                    printlog($titleColor->getColoredString("                                                               "));
+                    include "commands/$folder/" . $args[0] . ".php";
+                    $success = true;
+                }
+            }
+        }
+
+
+        if ($success == false) {
+            printlog($titleColor->getColoredString("                          Leravel CLI                          "));
+            printlog($warningColor->getColoredString("WARNING : Command not found! \nFor the list of commands use the \"help\" command!"));
         }
     }
     waitForInput();

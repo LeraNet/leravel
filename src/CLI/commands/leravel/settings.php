@@ -1,6 +1,6 @@
 <?php 
 
-$settingsJson = json_decode(file_get_contents(dirname(dirname( dirname(__FILE__) )) . "/app/settings.json"), true);
+$settingsJson = json_decode(file_get_contents(dirname(dirname(dirname( dirname(__FILE__) ))) . "/app/settings.json"), true);
 
 $action = $args[1] ?? null;
 $from = $args[2] ?? null;

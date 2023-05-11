@@ -1,0 +1,13 @@
+{
+    "custom" : {
+        "example" : "Example Command"
+    },
+    "leravel" : {
+        "settings" : "Manage settings.json using Leravel CLI"
+    },
+    "default" : {
+        "help" : "See the list of commands",
+        "start" : "Start the default php server",
+        "clear" : "Clear the terminal"
+    }
+}
