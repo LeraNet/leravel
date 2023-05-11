@@ -10,6 +10,7 @@ $render =  $_GET["render"] ?? "false";
 if ($render == "true") {
     $weeklyVisits = array();
 
+
     foreach ($stats as $stat) {
         $date = $stat["date"];
         $visits = 0;
@@ -60,7 +61,7 @@ if ($render == "true") {
         if (in_array($ip, array_column($visitors, "ip"))) {
             continue;
         }
-        if ($ip == "127.0.0.1") {
+        if ($ip == "127.0.0.1" || $ip == "::1") {
             continue;
         }
         $country = json_decode(file_get_contents("http://ip-api.com/json/" . $ip), true)["country"];

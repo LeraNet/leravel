@@ -13,5 +13,10 @@
         "error" : "parse_ini_file(",
         "file" : "\\admin\\admin.php",
         "solution" : "<b>account.ini</b> moved into <b>/app/adminAccount.ini</b><br>For more info : <a href='https://github.com/lera2od/leravel/releases/tag/1.3'>leravel v1.3 changelog</a>"
+    },
+    {
+        "error" : "Uncaught mysqli_sql_exception",
+        "file" : "leravelVar.php",
+        "solution" : "The default MySQLI connection having trouble connecting to the MySQL server<br>Check if your MySQL server is on. Or disable the database entirely from settings.json"
     }
 ]

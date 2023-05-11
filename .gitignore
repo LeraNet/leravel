@@ -1,5 +1,5 @@
-src/app/settings.json
-README.md
+src/leravel/leravel.json
+src/leravel/admin/statRenders/lastUpdated.json
+src/leravel/admin/statRenders/mostVisitedPages.json
+src/leravel/admin/statRenders/weeklyVisits.json
 src/app/stats.json
-src/leravel/admin/statRenders
-.gitignore

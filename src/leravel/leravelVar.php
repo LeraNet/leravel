@@ -20,7 +20,7 @@ $Leravel["conn"] = null;
 if ($Leravel["settings"]["database"]["enabled"] == "true" || $Leravel["settings"]["database"]["enabled"] == "1") {
     $Leravel["conn"] = new Mysqli($Leravel["settings"]["database"]["host"], $Leravel["settings"]["database"]["username"], $Leravel["settings"]["database"]["password"], $Leravel["settings"]["database"]["database"]);
 
-    if ($Leravel["conn"]->connect_error) {
-        die("Connection failed: " . $Leravel["conn"]->connect_error);
+    if ( $Leravel["conn"]->connect_errno ) {
+        die('Connect Error: ' . $db->connect_errno);
     }
 }
