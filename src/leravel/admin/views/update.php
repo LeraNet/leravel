@@ -66,7 +66,7 @@ if (isset($_GET["success"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leravel Settings</title>
+    <title>Leravel Update Checker</title>
     <link rel="stylesheet" href="/?admin&route=css">
 </head>
 

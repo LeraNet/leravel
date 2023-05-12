@@ -5,7 +5,7 @@ if ($Leravel["settings"]["database"]["enabled"] != "true" && $Leravel["settings"
     <?php include "include/header.php" ?>
     <?php include "include/sidebar.php" ?>
     <head>
-        <title>Leravel Admin Database</title>
+        <title>Leravel Admin Database Manager</title>
     </head>
     <div class="content">
         <h1>Database Manager!</h1>
