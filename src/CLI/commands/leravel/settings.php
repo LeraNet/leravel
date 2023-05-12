@@ -24,7 +24,7 @@ switch ($action) {
                 printlog("Example : setting set admin.enabled 0");
             }
             $settingsJson[$category][$subject] = $to;
-            file_put_contents(dirname(dirname(dirname(__FILE__))) . "/app/settings.json" , json_encode($settingsJson));
+            file_put_contents(dirname(dirname(dirname(dirname(__FILE__))))  . "/app/settings.json" , json_encode($settingsJson));
             printlog($successColor->getColoredString("Settings changed successfully!"));
             printlog("Changed \"$from\" to \"$to\"");
         }else{
