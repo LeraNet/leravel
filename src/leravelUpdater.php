@@ -210,7 +210,7 @@ if (isset($_POST["update"]) && $_POST["update"] == "true") {
     </header>
     <div class="sidebar">
         <ul>
-            <li><a href="/?update">Update</a></li>
+            <li><a href="/?update">leravelUpdater</a></li>
         </ul>
     </div>
 
