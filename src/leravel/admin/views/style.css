@@ -193,7 +193,10 @@ h2 img {
 
 .tabs {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    max-width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .tabs .tab {
@@ -510,6 +513,7 @@ button {
 
 ::-webkit-scrollbar {
     width: 7px;
+    height: 5px;
     padding: 5px;
 }
 
@@ -607,4 +611,63 @@ canvas {
     border-radius: 4px;
     margin: 20px;
     box-shadow: 0 0 10px #cccccc;
+}
+
+.news {
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px black;
+    box-shadow: 0px 0px 10px 1px #00000057;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.news h2 {
+    font-size: 18px;
+}
+
+.news-scroll {
+    max-height: 150px;
+    overflow: auto;
+    padding: 10px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.new {
+    margin: 0;
+    background-color: #e4e7eb;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.news h3 {
+    font-size: 16px;
+}
+
+.news p {
+    font-size: 12px;
+}
+
+.news-and-motd {
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+}
+
+.news-and-motd .news {
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    .news-and-motd {
+        flex-direction: column;
+    }
+    .news-and-motd div {
+        width: 100% !important;
+    }
 }
