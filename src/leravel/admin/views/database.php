@@ -8,7 +8,7 @@ if ($Leravel["settings"]["database"]["enabled"] != "true" && $Leravel["settings"
         <title>Leravel Admin Database Manager</title>
     </head>
     <div class="content">
-        <h1>Database Manager!</h1>
+        <h1><img src='<?= $icons["database"]?>' draggable="false">Database Manager!</h1>
         <div class="tab-content">
             <h3>Database is disabled!</h3>
             <p>Enable the database in the <a href="/?admin&route=settings">settings</a> to use the database manager.</p>
