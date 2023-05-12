@@ -3,3 +3,4 @@ src/leravel/admin/statRenders/lastUpdated.json
 src/leravel/admin/statRenders/mostVisitedPages.json
 src/leravel/admin/statRenders/weeklyVisits.json
 src/app/stats.json
+.vscode/settings.json
