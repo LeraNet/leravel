@@ -36,10 +36,13 @@ if (!isset($leravelInfo["lastMotdCheck"]) || $leravelInfo["lastMotdCheck"] < tim
     <div class="content">
         <h1>Welcome, <?= $_SESSION["username"] ?>!</h1>
         <?php if (isset($leravelInfo["latestVersion"]) && $leravelInfo["latestVersion"] > $leravelVersion) { ?>
+            <?php if(!isset($Leravel["settings"]["update"]["enabled"]) || $Leravel["settings"]["update"]["enabled"] == "1") { ?>
             <div class="newVersionReminderBanner">
                 <p>New version of Leravel is available. <a href="/?admin&route=update" class="btn">Update now</a></p>
             </div>
-        <?php } ?>
+            <br>
+            <?php } ?>
+        <?php  } ?>
         <div class="news-and-motd">
             <div class="news">
                 <h2>Message Of The Day!</h2>
