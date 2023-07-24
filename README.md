@@ -15,7 +15,7 @@ Leravel is a PHP framework that claims to have cool features like a router, temp
 ## Getting Started
 To get started with Leravel, follow these steps:
 
-0. Leravel needs gd extention for its captcha.
+0. Leravel needs gd extention for its captcha. Also you will need php and mysql
 1. Download the latest Leravel release from the releases(Download leravelApp.zip)
 2. Extract the leravel app anywhere.
 3. By the default leravel tries to connect to a MySQL server. If you dont have a MySQL server. Disable the default connection in the `app/settings.json` file.
