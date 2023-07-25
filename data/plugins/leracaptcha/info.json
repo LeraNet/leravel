@@ -3,5 +3,6 @@
     "name" : "Parsedown",
     "desc" : "Better Markdown Parser in PHP",
     "author" : "erusev",
-    "github" : "https://github.com/erusev/parsedown"
+    "github" : "https://github.com/erusev/parsedown",
+    "files" : ["index.php"]
 }
