@@ -15,13 +15,13 @@ Leravel is a PHP framework that claims to have cool features like a router, temp
 ## Getting Started
 To get started with Leravel, follow these steps:
 
-0. Leravel needs gd extention for its captcha.
+0. Leravel needs gd extention for its captcha. Also you will need php and mysql
 1. Download the latest Leravel release from the releases(Download leravelApp.zip)
-2. Extract the leravel app elsewhere.
-3. At the default leravel tries to connect to a MySQL server. If you dont have a MySQL server. Disable the default connection in the `app/settings.json` file.
+2. Extract the leravel app anywhere.
+3. By the default leravel tries to connect to a MySQL server. If you dont have a MySQL server. Disable the default connection in the `app/settings.json` file.
 4. Run cli.bat or cli.sh.
 5. Type `>start` to start your web application.
-6. In order to use the admin panel you need to go to `http://localhost:8000?admin` not `/admin` `?admin`
+6. In order to use the admin panel you need to go to `http://localhost:8000?admin` not `/admin` it is `?admin`
 
 ## Leravel Admin
 ![leravel admin screenshot](https://cdn.discordapp.com/attachments/989920686065725490/1098666798129360967/image.png)
