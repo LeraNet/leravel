@@ -1,8 +1,8 @@
 {
     "logo" : "https://cdn.discordapp.com/attachments/989920686065725490/1133507114707460196/image.png",
-    "name" : "LeraCaptcha",
-    "desc" : "Ultra basic captcha!",
-    "author" : "lera",
-    "github" : "https://github.com/lera2od/leravel",
+    "name" : "Parsedown",
+    "desc" : "Better Markdown Parser in PHP",
+    "author" : "erusev",
+    "github" : "https://github.com/erusev/parsedown",
     "files" : ["index.php"]
 }
