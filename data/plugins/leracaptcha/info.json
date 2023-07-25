@@ -1,0 +1,7 @@
+{
+    "logo" : "https://camo.githubusercontent.com/ff5b6bda0297ff35e1e16738d2f4f915140e1b2b0266b34a4da08e479d0038c5/68747470733a2f2f692e696d6775722e636f6d2f664b5659364b7a2e706e67",
+    "name" : "Parsedown",
+    "desc" : "Better Markdown Parser in PHP",
+    "author" : "erusev",
+    "github" : "https://github.com/erusev/parsedown"
+}
