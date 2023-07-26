@@ -1,0 +1,44 @@
+[
+    {
+        "error" : "preg_match(): Compilation failed: subpattern name must start with a non-digit at offset",
+        "file" : "router.php",
+        "solution" : "This error is caused by a malformed regular expression your routes.php file. Please don't use subpattern names that start with a number.",
+        "errorName" : "dynamicRoutesNumbers"
+    },
+    {
+        "error" : "Uncaught mysqli_sql_exception: Access denied for user",
+        "file" : "index.php",
+        "solution" : "This error is caused by a wrong database username or password in your settings.json file.",
+        "errorName" : "databaseAccessDenied"
+    },
+    {
+        "error" : "parse_ini_file(",
+        "file" : "\\admin\\admin.php",
+        "solution" : "There is 2 probable causes.<br> 1: Admin credentials file(<b>account.ini</b>) is not found.<br> 2: <b>account.ini</b> moved into <b>/app/adminAccount.ini</b> in <a href='https://github.com/lera2od/leravel/releases/tag/1.3'>leravel v1.3</a> update. If adminAccount.ini isn't in app folder it may be the cause.",
+        "errorName" : "adminCredentialsNotFound"
+    },
+    {
+        "error" : "Uncaught mysqli_sql_exception",
+        "file" : "leravelVar.php",
+        "solution" : "The default MySQLI connection having trouble connecting to the MySQL server<br>Check if your MySQL server is on. Or disable the database entirely from settings.json",
+        "errorName" : "databaseNotFound"
+    },
+    {
+        "error" : "file_get_contents(app/localization/",
+        "file" : "leravelVar.php",
+        "solution" : "This error means the language user is trying to use is not indexed in the settings.json file.",
+        "errorName" : "langNotFound"
+    },
+    {
+        "error" : "Trying to access array offset on value of type null",
+        "file" : "leravelVar.php",
+        "solution" : "This may be caused by a bunch of thing but here is some probable causes:<br> 1. There may be an error in settings.json",
+        "errorName" : "leravelUnknown1"
+    },
+    {
+        "error" : "Undefined array key",
+        "file" : "template.php",
+        "solution" : "A lang key you used doesn't exist",
+        "errorName" : "langKeywordNotFound"
+    }
+]
