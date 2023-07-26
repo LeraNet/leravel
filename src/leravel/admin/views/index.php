@@ -18,6 +18,10 @@ if (!isset($leravelInfo["lastMotdCheck"]) || $leravelInfo["lastMotdCheck"] < tim
     $motd = $leravelInfo["motd"];
 }
 
+if(isset($_GET["noupdate"])) {
+    unset($_SESSION["Update"]);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

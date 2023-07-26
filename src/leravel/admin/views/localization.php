@@ -195,6 +195,7 @@ if(isset($_GET["error"])) {
                         }
                         ?>
                     </table>
+                    <br>
                     <input type="submit" value="Kaydet">
                 </form>
             </div>

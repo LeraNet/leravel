@@ -48,18 +48,18 @@ if (isset($_POST["update"]) && $_POST["update"] == "true") {
     <title>Leravel Updater </title>
     <style>
         body {
-            background-color: #f5f5f5;
+            background-color: #4C5844;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-size: 14px;
             line-height: 1.42857143;
-            color: #333;
+            color: #FFFFFF;
             margin: 0;
             scroll-behavior: smooth;
         }
 
         header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e7e7e7;
+            background-color: #4C5844;
+            border-bottom: 1px solid #808080;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             height: 50px;
             line-height: 50px;
@@ -85,61 +85,9 @@ if (isset($_POST["update"]) && $_POST["update"] == "true") {
             text-decoration: none;
         }
 
-        .sidebar {
-            background-color: #d3d3d3;
-            color: white;
-            position: fixed;
-            top: 50px;
-            left: 0;
-            z-index: 1000;
-            display: flex;
-            padding: 20px;
-            overflow-x: hidden;
-            overflow-y: auto;
-            border-right: 1px solid #000000;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            flex-direction: column;
-            width: 200px;
-            height: calc(100% - 50px);
-        }
-
-        .sidebar ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin: 0;
-            padding: 0;
-        }
-
-        .sidebar ul li a {
-            color: #333;
-            text-decoration: none;
-            display: block;
-            padding: 10px 20px;
-            border-radius: 15px;
-            transition: all 0.2s ease-in-out;
-            display: flex;
-            align-items: center;
-        }
-
-        .sidebar ul li a img {
-            width: 25px;
-            height: 25px;
-            margin-right: 10px;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: white;
-            color: #333;
-        }
-
         .content {
             margin: 20px;
             padding: 20px;
-            margin-left: 250px;
             min-height: calc(100% - 50px);
         }
 
@@ -155,30 +103,24 @@ if (isset($_POST["update"]) && $_POST["update"] == "true") {
         }
 
         .tab-content {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-radius: 0 4px 4px 4px;
+            background-color: #3E4637;
+            border: 1px solid #282E22;
             padding: 20px;
         }
-        
+
         button {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-radius: 4px;
-            color: #333;
-            display: inline-block;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.42857143;
-            margin-bottom: 0;
-            padding: 6px 12px;
-            text-align: center;
-            vertical-align: middle;
-            white-space: nowrap;
+            border-width: 1px;
+            border-style: solid;
+            padding: 5px;
+            border-color: #808080 #282e22 #282e22 #808080;
+            background-color: #566d47;
             cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s ease-in-out;
         }
+
+        button:hover {
+            border-color: #282e22 #808080 #808080 #282e22;
+        }
+
 
         header {
             height: 110px;
@@ -204,16 +146,11 @@ if (isset($_POST["update"]) && $_POST["update"] == "true") {
 <body>
     <header>
         <img id="logo" src="https://cdn.discordapp.com/attachments/996815021109674054/1101189711474729040/leravellogo2.png" alt="">
+        <button onclick="window.location.reload();">leravelUpdater</button>
         <div>
-            <a href="/?admin&route=/">admin</a>
+            <a href="/?admin&route=/&noupdate">admin</a>
         </div>
     </header>
-    <div class="sidebar">
-        <ul>
-            <li><a href="/?update">leravelUpdater</a></li>
-        </ul>
-    </div>
-
     <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/checkUpdate.php" ?>
     <div class="content">
         <h1>Leravel Updater</h1>
