@@ -6,6 +6,10 @@ function lang($key) {
     return $Leravel["lang"][$key];
 }
 
+function changeLang($key) {
+    setcookie("leravel_lang", $key, 0, "/");
+}
+
 function template($view, $data = []) {
     global $Leravel;
     extract($data);

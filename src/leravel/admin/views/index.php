@@ -60,6 +60,7 @@ if (!isset($leravelInfo["lastMotdCheck"]) || $leravelInfo["lastMotdCheck"] < tim
                 </div>
             </div>
         </div>
+        <p>All icons used in this app is from <a href="https://icons8.com">Icons8</a>. Thanks for the insane🤯 icons!</p>
     </div>
 </body>
 

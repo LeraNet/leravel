@@ -18,4 +18,9 @@ $Router->get("/media/{id}", function ($args) {
     $media->serve();
 });
 
+$Router->get("/lang/{lang}", function ($args) {
+    changeLang($args["lang"]);
+    header("Location: /");
+});
+
 $Router->run();

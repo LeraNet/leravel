@@ -4,6 +4,8 @@
         <li><a href="/?admin&route=database"><img src="<?= $icons["database"]?>">Database</a></li>
         <li><a href="/?admin&route=localization"><img src="<?= $icons["localization"]?>">Localization</a></li>
         <li><a href="/?admin&route=stats"><img src="<?= $icons["stats"]?>">Stats</a></li>
+        <li><a href="/?admin&route=plugins"><img src="<?= $icons["plugins"]?>">Plugins</a></li>
+        <li><a href="/?admin&route=tool"><img src="<?= $icons["tools"]?>">Tools</a></li>
         <li><a href="/?admin&route=settings"><img src="<?= $icons["settings"]?>">Settings</a></li>
         <li><a href="/?admin&route=update"><img src="<?= $icons["update"]?>">Update</a></li>
     </ul>
@@ -15,6 +17,8 @@
         <option value="/?admin&route=/">Home</option>
         <option value="/?admin&route=database">Database</option>
         <option value="/?admin&route=localization">Localization</option>
+        <option value="/?admin&route=plugins">Plugins</option>
+        <option value="/?admin&route=tool">Tools</option>
         <option value="/?admin&route=settings">Settings</option>
         <option value="/?admin&route=update">Update</option>
     </select>

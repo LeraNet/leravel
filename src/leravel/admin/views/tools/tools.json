@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Base",
+    "icon": "https://img.icons8.com/?size=512&id=wJVDOwCZqokW&format=png",
+    "tools": [
+      {
+        "title": "Database Manager",
+        "icon": "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
+        "file": "?admin&route=database",
+        "type": "ext"
+      },
+      {
+        "title": "Localization Manager",
+        "icon": "https://img.icons8.com/?size=512&id=9m2yplxz2fr3&format=png",
+        "file": "?admin&route=localization",
+        "type": "ext"
+      },
+      {
+        "title": "Stats Display",
+        "icon": "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
+        "file": "?admin&route=stats",
+        "type": "ext"
+      },
+      {
+        "title": "Plugin Manager",
+        "icon": "https://img.icons8.com/?size=512&id=LV1toaPaA7ia&format=png",
+        "file": "?admin&route=plugins",
+        "type": "ext"
+      },
+      {
+        "title": "Settings Manager",
+        "icon": "https://img.icons8.com/?size=512&id=s5NUIabJrb4C&format=png",
+        "file": "?admin&route=settings",
+        "type": "ext"
+      },
+      {
+        "title": "Updater",
+        "icon": "https://img.icons8.com/?size=512&id=dkvPGMU3MKpu&format=png",
+        "file": "?admin&route=update",
+        "type": "ext"
+      }
+    ]
+  },
+  {
+    "title": "Misc",
+    "icon": "https://img.icons8.com/?size=512&id=YXWkZzb4J3aD&format=png",
+    "tools": [
+      {
+        "title": "Static Site Generator",
+        "icon": "https://img.icons8.com/?size=512&id=QwEwqmJDk4Za&format=png",
+        "file": "staticSiteGenerator",
+        "type": "int"
+      }
+    ]
+  }
+]

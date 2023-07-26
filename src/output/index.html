@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<link rel="stylesheet" href="D:\projeler\PHP - Genel\Leravel\src/output/css/index.css"><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -137,20 +137,14 @@
 
 <body>
     <div class="langChanger">
-        <p>{[changeLang]}</p>
+        <p>Dili Değiştir :</p>
         <div class="langs">
-            <?php
-            array_shift($Leravel["settings"]["lang"]);
-            foreach ($Leravel["settings"]["lang"] as $lang) {
-                echo '<a href="/lang/' . $lang . '">' . $lang . '</a>';
-            }
-            ?>
-        </div>
+            <a href="/lang/tr">tr</a><a href="/lang/en">en</a><a href="/lang/ar">ar</a>        </div>
     </div>
     <div class="centerbox">
         <img src="https://cdn.discordapp.com/attachments/989920686065725490/1097604721369423953/leravellogo.png" alt="" class="logo" draggable="false">
         <h1 class="center">Leravel</h1>
-        <p class="center">{[about]}</p>
+        <p class="center">Hakkında</p>
         <a href="https://github.com/lera2od/leravel" class="btn"><img src="https://img.icons8.com/fluency/256/github.png">Github</a>
     </div>
 </body>

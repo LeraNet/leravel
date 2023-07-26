@@ -1,4 +1,9 @@
 <?php
+//average lera code :DDDDD
+if (!get_loaded_extensions('gd') && !function_exists('gd_info')) {
+    echo "You can't use the admin features because gd plugin is not downloaded. We use gd to generate the captcha image. Please download the gd extention. <a href='https://www.php.net/manual/en/image.setup.php'>[ Tutorial From PHP Documentation ]</a>";
+    exit;
+}
 
 function redirect($path)
 {
@@ -18,6 +23,8 @@ $icons = array(
     "language" => "https://img.icons8.com/?size=512&id=mEjjp0oFPnvc&format=png",
     "home" => "https://img.icons8.com/?size=512&id=wFfu6zXx15Yk&format=png",
     "stats" => "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
+    "plugins" => "https://img.icons8.com/?size=512&id=LV1toaPaA7ia&format=png",
+    "tools" => "https://img.icons8.com/?size=512&id=Vh44ppGKSLoR&format=png"
 );
 
 if ($route == "") {
@@ -49,7 +56,7 @@ switch ($route) {
     case "lsuccess":
         if ($loggedIn) {
             include "views/loginSuccess.php";
-        }else{
+        } else {
             redirect("login");
             exit;
         }
@@ -104,6 +111,26 @@ switch ($route) {
     case "settings":
         if ($loggedIn) {
             include "views/settings.php";
+        } else {
+            redirect("login");
+            exit;
+        }
+        break;
+    case "plugins":
+        if ($loggedIn) {
+            include "views/plugins.php";
+        } else {
+            redirect("login");
+            exit;
+        }
+        break;
+    case "tool":
+        if ($loggedIn) {
+            if(!isset($_GET["tool"])) {
+                include "views/tools/index.php";
+            }else{
+                include "views/tools/{$_GET["tool"]}.php";
+            }
         } else {
             redirect("login");
             exit;

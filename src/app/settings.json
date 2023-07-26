@@ -1,13 +1,30 @@
 {
-  "router": { "views": "app/views", "404": "app/views/404.php" },
-  "lang": { "default": "en", "tr": "tr", "en": "en" },
-  "database": {
-    "enabled": "0",
-    "host": "localhost",
-    "username": "root",
-    "password": "",
-    "database": "leravel"
-  },
-  "admin": { "enabled": "1", "captcha": "0" },
-  "stats": { "enabled": "1" }
+    "router": {
+        "views": "app\/views",
+        "404": "app\/views\/404.php"
+    },
+    "lang": {
+        "default": "en",
+        "tr": "tr",
+        "en": "en",
+        "ar": "ar"
+    },
+    "errors": {
+        "devErrorPage": "1",
+        "errorFile": "error.php"
+    },
+    "database": {
+        "enabled": "0",
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "leravel"
+    },
+    "admin": {
+        "enabled": "1",
+        "captcha": "1"
+    },
+    "stats": {
+        "enabled": "0"
+    }
 }

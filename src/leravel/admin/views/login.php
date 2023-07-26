@@ -104,12 +104,12 @@ if(isset($_POST["username"])) {
     <form action="/?admin&route=login" method="post" autocomplete="off">
         <input type="text" name="username" placeholder="username">
         <input type="password" name="password" placeholder="password">
-        <?php if($Leravel["settings"]["admin"]["captcha"] == "1" || $Leravel["settings"]["admin"]["captcha"] == "true") : ?>
+        <?php if($Leravel["settings"]["admin"]["captcha"] == "1" || $Leravel["settings"]["admin"]["captcha"] == "true") :?>
         <div class="captcha">
             <img src="/?admin&route=captcha" alt="captcha">
             <input type="text" name="captcha" placeholder="captcha">
         </div>
-        <?php endif ?>
+        <?php endif; ?>
         <input type="submit" value="Login">
     </form>
 </body>

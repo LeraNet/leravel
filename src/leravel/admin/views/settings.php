@@ -21,6 +21,10 @@ $vocabulary = array(
     "admin" => array(
         "enabled" => "Enabled",
     ),
+    "errors" => array(
+        "devErrorPage" => "Developer Error Page",
+        "errorFile" => "Custom Error Filename"
+    ),
     "stats" => array(
         "enabled" => "Enabled",
     )
@@ -31,7 +35,9 @@ $categoryVocabulary = array(
     "lang" => "Language",
     "database" => "Database",
     "admin" => "Admin Panel",
-    "stats" => "Statistics"
+    "stats" => "Statistics",
+    "errors" => "Errors"
+
 );
 
 $syntaxVocabulary = array(
@@ -51,6 +57,10 @@ $syntaxVocabulary = array(
     ),
     "admin" => array(
         "enabled" => "Enable or disable the admin panel. The default value is \"true\" or \"1\"."
+    ),
+    "errors" => array(
+        "devErrorPage" => "Enable or disable the developer error page. The default value is \"true\" or \"1\".",
+        "errorFile" => "The custom error page filename."
     ),
     "stats" => array(
         "enabled" => "Enable or disable the statistics. The default value is \"true\" or \"1\"."
@@ -95,7 +105,7 @@ $tabs = array(
     "account" => "adminAccount.ini"
 );
 
-$currentTab = $_GET["tab"] ?? "settings";
+$currentTab = $_GET["tab"] ?? "settings.json";
 ?>
 <!DOCTYPE html>
 <html lang="en">

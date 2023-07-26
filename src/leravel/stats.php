@@ -63,7 +63,7 @@ if (strpos($uri, "?admin") == false && strpos($uri, "?update") == false) {
 
 if($uri == "/favicon.ico") return;
 
-if($_SERVER["REMOTE_ADDR"] == "127.0.0.1") return;
+if($_SERVER["REMOTE_ADDR"] == "127.0.0.1" || $_SERVER["REMOTE_ADDR"] == "::1") return;
 
 $stats[] = [
     "url" => $_SERVER["REQUEST_URI"],
