@@ -1,5 +1,6 @@
 <?php
 $tools = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/tools/tools.json"), true);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,17 +24,19 @@ $tools = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/adm
             foreach ($tools as $category) :
             ?>
                 <ul class="tools">
-                    <p><img src="<?= $category["icon"] ?>" alt=""><?= $category["title"] ?></p>
+                    <p><img src="<?= $category["icon"] ?>" alt="" draggable="false"><?= $category["title"] ?></p>
                     <?php
                     foreach ($category["tools"] as $tool) :
+                        if ($tool["type"] == "int") :
                     ?>
-                        <li>↳ <a href="<?php
-                        if(isset($tool["type"] ) && $tool["type"] == "ext") {
-                            echo $tool["file"];
-                        }else{
-                            echo "?admin&route=tool&tool=" . $tool["file"];
-                        }
-                        ?>"><img src="<?= $tool["icon"] ?>" alt=""><?= $tool["title"] ?></a></li>
+                            <li>↳ <a href="<?= "?admin&route=tool&tool=" . $tool["file"]; ?>"><img src="<?= $tool["icon"] ?>" alt="" draggable="false"><?= $tool["title"] ?></a></li>
+                        <?php elseif ($tool["type"] == "ext") : ?>
+
+                            <li>↳ <a href="<?= $tool["file"]; ?>"><img src="<?= $tool["icon"] ?>" alt="" draggable="false"><?= $tool["title"] ?></a></li>
+                        <?php elseif ($tool["type"] == "experiment" && isExperimentActive($tool["experiment"], $activeExperiments)) :
+                        ?>
+                            <li>↳ <a href="<?= $tool["file"]; ?>"><img src="<?= $tool["icon"] ?>" alt="" draggable="false"><?= $tool["title"] ?></a></li>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
             <?php endforeach; ?>

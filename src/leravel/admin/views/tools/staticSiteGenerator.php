@@ -57,7 +57,7 @@ if (isset($_POST["lang"])) {
         generateCSSFile($cssFileName, $usedClassesAndStyles);
         $content = '<link rel="stylesheet" href="' . $cssFileName . '">' . $content;
         file_put_contents($outputFile, $content);
-        echo $inputFile . " done \n";
+        echo $inputFile . " done <br>";
     }
 
     function convertAllPHPToStaticHTMLWithCSS($sourceDir, $outputDir)

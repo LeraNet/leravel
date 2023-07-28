@@ -1,28 +1,113 @@
+<?php
+
+$experimentsFile = $_SERVER["DOCUMENT_ROOT"] . '/leravel/admin/experiments.json';
+$activeExperiments = [];
+if (file_exists($experimentsFile)) {
+    $activeExperiments = json_decode(file_get_contents($experimentsFile), true);
+}
+
+function isExperimentActive($experiment, $activeExperiments)
+{
+    if(in_array($experiment, $activeExperiments)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+$navigation = [
+    "Home" => [
+        "title" => "Home",
+        "icon" => "home",
+        "uri" => "/?admin&route=/",
+        "enabled" => true
+    ],
+    "Database" => [
+        "title" => "Database",
+        "icon" => "database",
+        "uri" => "/?admin&route=database",
+        "enabled" => true
+    ],
+    "Localization" => [
+        "title" => "Localization",
+        "icon" => "localization",
+        "uri" => "/?admin&route=localization",
+        "enabled" => true
+    ],
+    "Stats" => [
+        "title" => "Stats",
+        "icon" => "stats",
+        "uri" => "/?admin&route=stats",
+        "enabled" => true
+    ],
+    "Plugins" => [
+        "title" => "Plugins",
+        "icon" => "plugins",
+        "uri" => "/?admin&route=plugins",
+        "enabled" => false,
+        "experiment" => "pluginsmanager_07_23"
+    ],
+    "Tools" => [
+        "title" => "Tools",
+        "icon" => "tools",
+        "uri" => "/?admin&route=tool",
+        "enabled" => true
+    ],
+    "Settings" => [
+        "title" => "Settings",
+        "icon" => "settings",
+        "uri" => "/?admin&route=settings",
+        "enabled" => true
+    ],
+    "Update" => [
+        "title" => "Update",
+        "icon" => "update",
+        "uri" => "/?admin&route=update",
+        "enabled" => true
+    ]
+];
+?>
+
 <div class="sidebar">
     <ul>
-        <li><a href="/?admin&route=/"><img src="<?= $icons["home"]?>">Home</a></li>
-        <li><a href="/?admin&route=database"><img src="<?= $icons["database"]?>">Database</a></li>
-        <li><a href="/?admin&route=localization"><img src="<?= $icons["localization"]?>">Localization</a></li>
-        <li><a href="/?admin&route=stats"><img src="<?= $icons["stats"]?>">Stats</a></li>
-        <li><a href="/?admin&route=plugins"><img src="<?= $icons["plugins"]?>">Plugins</a></li>
-        <li><a href="/?admin&route=tool"><img src="<?= $icons["tools"]?>">Tools</a></li>
-        <li><a href="/?admin&route=settings"><img src="<?= $icons["settings"]?>">Settings</a></li>
-        <li><a href="/?admin&route=update"><img src="<?= $icons["update"]?>">Update</a></li>
+        <?php foreach ($navigation as $itemKey => $item) : ?>
+            <?php
+            $isEnabled = $item['enabled'];
+            if (isset($item['experiment']) && isExperimentActive($item['experiment'], $activeExperiments) == true) {
+                $isEnabled = true;
+            }
+            ?>
+
+            <?php if ($isEnabled) : ?>
+                <li>
+                    <a href="<?= $item['uri'] ?>">
+                        <img src="<?= $icons[$item['icon']] ?>" draggable="false">
+                        <?= $item['title'] ?>
+                    </a>
+                </li>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </ul>
 </div>
 
 <div class="mobile-sidebar">
     <select name="" id="selectPage" onchange="navigate()">
         <option value="">Select Page</option>
-        <option value="/?admin&route=/">Home</option>
-        <option value="/?admin&route=database">Database</option>
-        <option value="/?admin&route=localization">Localization</option>
-        <option value="/?admin&route=plugins">Plugins</option>
-        <option value="/?admin&route=tool">Tools</option>
-        <option value="/?admin&route=settings">Settings</option>
-        <option value="/?admin&route=update">Update</option>
+        <?php foreach ($navigation as $itemKey => $item) : ?>
+            <?php
+            $isEnabled = $item['enabled'];
+            if (isset($item['experiment']) && !empty($item['experiment'])) {
+                $isEnabled = $isEnabled && isExperimentActive($item['experiment'], $activeExperiments);
+            }
+            ?>
+
+            <?php if ($isEnabled) : ?>
+                <option value="<?= $item['uri'] ?>"><?= $item['title'] ?></option>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </select>
 </div>
+
 
 <script>
     let selectPage = document.querySelector("#selectPage");

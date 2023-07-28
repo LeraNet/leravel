@@ -178,8 +178,6 @@ h2 img {
 }
 
 .btn:hover {
-  background-color: #e6e6e6;
-  border-color: #adadad;
   color: #333;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -343,12 +341,19 @@ table {
   width: 100%;
   border: 1px solid #cccccc;
   box-shadow: 0 0 10px #cccccc;
+  max-width: 100%;
 }
 
-th,
+th {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
 td {
   text-align: left;
   padding: 8px;
+  word-wrap: break-word;
 }
 
 tr:nth-child(even) {
@@ -536,9 +541,7 @@ button {
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 4px;
-  padding: 20px;
-  padding-top: 10px;
-  margin: 20px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -746,4 +749,9 @@ canvas {
   gap: 5px;
   font-size: 16px;
   margin-left: 5px;
+}
+
+.lock {
+  width: 25px;
+  height: 25px;
 }

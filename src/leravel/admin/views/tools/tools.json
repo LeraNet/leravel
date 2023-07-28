@@ -16,16 +16,17 @@
         "type": "ext"
       },
       {
-        "title": "Stats Display",
-        "icon": "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
-        "file": "?admin&route=stats",
-        "type": "ext"
-      },
-      {
         "title": "Plugin Manager",
         "icon": "https://img.icons8.com/?size=512&id=LV1toaPaA7ia&format=png",
         "file": "?admin&route=plugins",
-        "type": "ext"
+        "type": "experiment",
+        "experiment": "pluginsmanager_07_23"
+      },
+      {
+        "title": "Modules Manager",
+        "icon": "https://img.icons8.com/?size=512&id=jzaaE6lUq9fx&format=png",
+        "file": "modules",
+        "type": "int"
       },
       {
         "title": "Settings Manager",
@@ -49,6 +50,24 @@
         "title": "Static Site Generator",
         "icon": "https://img.icons8.com/?size=512&id=QwEwqmJDk4Za&format=png",
         "file": "staticSiteGenerator",
+        "type": "int"
+      },
+      {
+        "title": "Stats Visualizer",
+        "icon": "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
+        "file": "?admin&route=stats",
+        "type": "ext"
+      },
+      {
+        "title": "Error Identifier",
+        "icon": "https://img.icons8.com/?size=512&id=4Ywlu1XtAw14&format=png",
+        "file": "erridentify",
+        "type": "int"
+      },
+      {
+        "title": "Experiments Manager",
+        "icon": "https://img.icons8.com/?size=512&id=XO5nRSypAbfH&format=png",
+        "file": "experiments",
         "type": "int"
       }
     ]

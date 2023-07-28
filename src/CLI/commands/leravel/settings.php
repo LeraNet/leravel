@@ -7,7 +7,7 @@ $from = $args[2] ?? null;
 $to = $args[3] ?? null;
 
 if(!isset($action)) {
-    printlog("Set an action!");
+    printlog("Set an action! (Ex : settings [get/set])");
     waitForInput();
 }
 
@@ -28,7 +28,7 @@ switch ($action) {
             printlog($successColor->getColoredString("Settings changed successfully!"));
             printlog("Changed \"$from\" to \"$to\"");
         }else{
-            printlog("Example : setting set admin.enabled 0");
+            printlog("Example : settings set admin.enabled 0");
         }
         break;
     default:

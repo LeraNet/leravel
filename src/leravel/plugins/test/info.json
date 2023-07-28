@@ -1,0 +1,8 @@
+{
+    "logo" : "",
+    "name" : "LeraCaptcha",
+    "desc" : "Ultra basic captcha!",
+    "author" : "lera",
+    "github" : "https://github.com/lera2od/leravel",
+    "files" : ["index.php"]
+}

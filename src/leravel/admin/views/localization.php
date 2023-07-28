@@ -103,7 +103,7 @@ if(isset($_GET["error"])) {
     <?php include "include/header.php" ?>
     <?php include "include/sidebar.php" ?>
     <div class="content">
-        <h1><img src="<?= $icons["localization"] ?>" draggable="false">Localization Manager!</h1>
+        <h1><img src="<?= $icons["localization"] ?>" draggable="false">Localization Manager</h1>
         <div class="tabs">
             <a href='?admin&route=localization&default' class='tab '>#</a>
             <?php
@@ -142,7 +142,7 @@ if(isset($_GET["error"])) {
                         ?>
                     </table>
                     <br>
-                    <input type="submit" value="Kaydet">
+                    <input type="submit" value="Save">
                 </form>
                 <br>
                 <a id="openscary" class="btn">Scary Buttons</a>
@@ -170,7 +170,7 @@ if(isset($_GET["error"])) {
             <div class="tab-content">
                 <h2>Default</h2>
                 <fieldset>
-                <legend>New Variable!</legend>
+                <legend>New Variable</legend>
                 <form action="?admin&route=localization" method="post" autocomplete="off">
                     <input type="hidden" name="action" value="addDefault">  
                     <input type="text" name="key" placeholder="key">
@@ -196,7 +196,7 @@ if(isset($_GET["error"])) {
                         ?>
                     </table>
                     <br>
-                    <input type="submit" value="Kaydet">
+                    <input type="submit" value="Save">
                 </form>
             </div>
 

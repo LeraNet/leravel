@@ -1,0 +1,12 @@
+{
+    "asset": true,
+    "errorHandler": true,
+    "mysql": true,
+    "pluginHandler": true,
+    "stats": true,
+    "template": true,
+    "variableCleanUp": true,
+    "extra": true,
+    "leravelVar": true,
+    "router": true
+}

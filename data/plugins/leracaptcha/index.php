@@ -3,3 +3,5 @@
 class LeraCaptcha {
 
 }
+
+$PluginClass = new LeraCaptcha;

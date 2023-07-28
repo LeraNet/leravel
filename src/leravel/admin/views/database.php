@@ -157,7 +157,7 @@ if (isset($_GET["success"])) {
                         echo "<input type='$type' name='" . $column[0] . "' id='" . $column[0] . "'><br>";
                     }
                     ?>
-                    <input type="submit" value="Ekle">
+                    <input type="submit" value="Create">
                 </form>
                 <br>
                 <div class="hr"></div>
@@ -202,7 +202,11 @@ if (isset($_GET["success"])) {
                     $count = $row[0];
                     $pages = ceil($count / 50);
                     for ($i = 1; $i <= $pages; $i++) {
-                        echo "<option value='$i'>$i</option>";
+                        $selected = "";
+                        if(isset($_GET["page"]) && $i == $_GET["page"]){
+                            $selected = "selected";
+                        }
+                        echo "<option value='$i' $selected>$i</option>";
                     }
                     ?>
                 </select>

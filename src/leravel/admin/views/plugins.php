@@ -75,6 +75,12 @@ if ($tab == "getPlugins") {
                                                                     } ?>">Plugins</a>
         </div>
         <div class="tab-content">
+            <div class="alert alert-warning">
+                <div>
+                    <h2>Warning</h2>
+                    <b>This feature is still work in progress.</b>
+                </div>
+            </div>
             <?php if ($tab == "pluginstore") : ?>
                 <h2>Plugin Store <button onclick="window.location.href = '/?admin&route=plugins&tab=getPlugins'">🔄</button></h2>
                 <div class="plugins">

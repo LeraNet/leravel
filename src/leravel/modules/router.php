@@ -52,7 +52,7 @@ class Router
         $method = strtolower($method) . "Routes";
         $uri = $_SERVER['REQUEST_URI'];
         if (strpos($uri, "?admin") !== false && $Leravel["settings"]["admin"]["enabled"] == true) {
-            require "admin/admin.php";
+            require $_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/admin.php";
             return;
         }
         if(strpos($uri, "?update") !== false && isset($_SESSION["loggedIn"])  && isset($_SESSION["Update"]) && $_SESSION["loggedIn"] == true && $Leravel["settings"]["admin"]["enabled"] == true && $_SESSION["Update"] == true){

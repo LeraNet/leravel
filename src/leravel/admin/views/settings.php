@@ -20,6 +20,7 @@ $vocabulary = array(
     ),
     "admin" => array(
         "enabled" => "Enabled",
+        "captcha" => "Captcha"
     ),
     "errors" => array(
         "devErrorPage" => "Developer Error Page",
@@ -56,7 +57,8 @@ $syntaxVocabulary = array(
         "database" => "The database name. The default value is \"leravel\"."
     ),
     "admin" => array(
-        "enabled" => "Enable or disable the admin panel. The default value is \"true\" or \"1\"."
+        "enabled" => "Enable or disable the admin panel. The default value is \"true\" or \"1\".",
+        "captcha" => "Enable or disable the admin panel captcha. The default value is \"true\" or \"1\"."
     ),
     "errors" => array(
         "devErrorPage" => "Enable or disable the developer error page. The default value is \"true\" or \"1\".",

@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$files = glob(__DIR__ . "/*.php");
-$packages = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/app/packages.json"), true);
+$files = glob(__DIR__ . "/modules/*.php");
+$packages = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/app/modules.json"), true);
 $using = [];
 
 foreach ($files as $file) {
@@ -17,7 +17,7 @@ foreach ($files as $file) {
     require_once($file);
 }
 
-include "leravelVar.php";
+include "modules/leravelVar.php";
 
 if(function_exists("cleanVariables")) {
     cleanVariables();

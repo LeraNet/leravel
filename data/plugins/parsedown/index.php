@@ -1992,3 +1992,5 @@ class Parsedown
                    'wbr', 'time',
     );
 }
+
+$PluginClass = new Parsedown;

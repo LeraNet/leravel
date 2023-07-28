@@ -113,7 +113,7 @@ if ($render == "true") {
     <?php include "include/header.php" ?>
     <?php include "include/sidebar.php" ?>
     <div class="content">
-        <h1><img src="<?= $icons["stats"] ?>" draggable="off">Statistics</h1>
+        <h1><img src="<?= $icons["stats"] ?>" draggable="off">Statistics Visualizer</h1>
         <div class="tab-content">
             <?php if ($render == "true") : ?>
                 <h1>Rendered</h1>
