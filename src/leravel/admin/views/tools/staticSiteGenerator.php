@@ -94,8 +94,10 @@ if (isset($_POST["lang"])) {
         <h1><img src='https://img.icons8.com/?size=512&id=QwEwqmJDk4Za&format=png' draggable="false"> Static Site Generator</h1>
         <div class="tab-content">
             <h2>Generate Site</h2>
-            <p>Warning : This is work in progress so it can give you some errors.</p>
-            <p>Warning : You need to make sure that there is no errors in any of the pages or else you will see an error.</p>
+            <div class="alert alert-warning">Warning : This is work in progress so it can give you some errors.</div>
+            <br>
+            <div class="alert alert-warning">Warning : You need to make sure that there is no errors in any of the pages or else you will see an error.</div>
+            <br>
             <form action="" method="post">
                 <label for="lang">Language Used :</label>
                 <input type="text" name="lang" id="" placeholder="Language Used" value="<?= $_COOKIE["leravel_lang"] ?? $Leravel["settings"]["lang"]["default"] ?>">

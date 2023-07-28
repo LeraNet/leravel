@@ -43,6 +43,7 @@ if (isset($_GET["success"])) {
         <h1><img src='https://img.icons8.com/?size=512&id=4Ywlu1XtAw14&format=png' draggable="false"> Error Identifier</h1>
         <div class="tab-content">
             <h2>Error Identifier</h2>
+            <p>Error Identifier lets you easily understand any Leravel error.</p>
             <table>
                 <tr>
                     <th>From</th>
