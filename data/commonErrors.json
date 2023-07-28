@@ -40,5 +40,11 @@
         "file" : "template.php",
         "solution" : "A lang key you used doesn't exist",
         "errorName" : "langKeywordNotFound"
+    },
+    {
+        "error" : "Undefined array key",
+        "file" : "pluginHandler.php",
+        "solution" : "The plugin you are trying to include doesn't exists",
+        "errorName" : "pluginsNotFound"
     }
 ]
