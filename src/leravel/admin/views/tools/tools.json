@@ -29,15 +29,15 @@
         "type": "int"
       },
       {
+        "title": "Experiments Manager",
+        "icon": "https://img.icons8.com/?size=512&id=XO5nRSypAbfH&format=png",
+        "file": "experiments",
+        "type": "int"
+      },
+      {
         "title": "Settings Manager",
         "icon": "https://img.icons8.com/?size=512&id=s5NUIabJrb4C&format=png",
         "file": "?admin&route=settings",
-        "type": "ext"
-      },
-      {
-        "title": "Updater",
-        "icon": "https://img.icons8.com/?size=512&id=dkvPGMU3MKpu&format=png",
-        "file": "?admin&route=update",
         "type": "ext"
       }
     ]
@@ -53,22 +53,16 @@
         "type": "int"
       },
       {
-        "title": "Stats Visualizer",
-        "icon": "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
-        "file": "?admin&route=stats",
-        "type": "ext"
-      },
-      {
         "title": "Error Identifier",
         "icon": "https://img.icons8.com/?size=512&id=4Ywlu1XtAw14&format=png",
         "file": "erridentify",
         "type": "int"
       },
       {
-        "title": "Experiments Manager",
-        "icon": "https://img.icons8.com/?size=512&id=XO5nRSypAbfH&format=png",
-        "file": "experiments",
-        "type": "int"
+        "title": "Updater",
+        "icon": "https://img.icons8.com/?size=512&id=dkvPGMU3MKpu&format=png",
+        "file": "?admin&route=update",
+        "type": "ext"
       }
     ]
   }
