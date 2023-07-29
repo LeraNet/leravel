@@ -38,13 +38,13 @@ if ($safe == true) {
 
     imagettftext($image, 30, 0, 50, 40, $black, $font, $code);
 
-    for ($i = 0; $i < 500; $i++) {
+    for ($i = 0; $i < 2500; $i++) {
         $x = rand(0, $width);
         $y = rand(0, $height);
         imagesetpixel($image, $x, $y, $black);
     }
 
-    for ($i = 0; $i < 25; $i++) {
+    for ($i = 0; $i < 50; $i++) {
         $x1 = rand(0, $width);
         $y1 = rand(0, $height);
         $x2 = rand(0, $width);

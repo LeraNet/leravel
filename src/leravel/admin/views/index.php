@@ -18,8 +18,14 @@ if (!isset($leravelInfo["lastMotdCheck"]) || $leravelInfo["lastMotdCheck"] < tim
     $motd = $leravelInfo["motd"];
 }
 
-if(isset($_GET["noupdate"])) {
+if (isset($_GET["noupdate"])) {
     unset($_SESSION["Update"]);
+}
+
+if (isset($_GET["loginsuccess"])) {
+    include "include/toast.php";
+
+    toast("Logged in successfully", "success");
 }
 
 ?>
@@ -40,11 +46,11 @@ if(isset($_GET["noupdate"])) {
     <div class="content">
         <h1>Welcome, <?= $_SESSION["username"] ?>!</h1>
         <?php if (isset($leravelInfo["latestVersion"]) && $leravelInfo["latestVersion"] > $leravelVersion) { ?>
-            <?php if(!isset($Leravel["settings"]["update"]["enabled"]) || $Leravel["settings"]["update"]["enabled"] == "1") { ?>
-            <div class="newVersionReminderBanner">
-                <p>New version of Leravel is available. <a href="/?admin&route=update" class="btn">Update now</a></p>
-            </div>
-            <br>
+            <?php if (!isset($Leravel["settings"]["update"]["enabled"]) || $Leravel["settings"]["update"]["enabled"] == "1") { ?>
+                <div class="newVersionReminderBanner">
+                    <p>New version of Leravel is available. <a href="/?admin&route=update" class="btn">Update now</a></p>
+                </div>
+                <br>
             <?php } ?>
         <?php  } ?>
         <div class="news-and-motd">
