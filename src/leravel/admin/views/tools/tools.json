@@ -39,18 +39,6 @@
         "icon": "https://img.icons8.com/?size=512&id=s5NUIabJrb4C&format=png",
         "file": "?admin&route=settings",
         "type": "ext"
-      }
-    ]
-  },
-  {
-    "title": "Misc",
-    "icon": "https://img.icons8.com/?size=512&id=YXWkZzb4J3aD&format=png",
-    "tools": [
-      {
-        "title": "Static Site Generator",
-        "icon": "https://img.icons8.com/?size=512&id=QwEwqmJDk4Za&format=png",
-        "file": "staticSiteGenerator",
-        "type": "int"
       },
       {
         "title": "Error Identifier",
@@ -63,6 +51,25 @@
         "icon": "https://img.icons8.com/?size=512&id=dkvPGMU3MKpu&format=png",
         "file": "?admin&route=update",
         "type": "ext"
+      }
+    ]
+  },
+  {
+    "title": "Misc",
+    "icon": "https://img.icons8.com/?size=512&id=YXWkZzb4J3aD&format=png",
+    "tools": [
+      {
+        "title": "LeravelJsonDatabase Manager",
+        "icon": "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
+        "file": "?admin&route=tool&tool=leraveljsondb",
+        "type": "experiment",
+        "experiment": "ljsondbeditor_08_23"
+      },
+      {
+        "title": "Static Site Generator",
+        "icon": "https://img.icons8.com/?size=512&id=QwEwqmJDk4Za&format=png",
+        "file": "staticSiteGenerator",
+        "type": "int"
       }
     ]
   }

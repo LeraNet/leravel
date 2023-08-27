@@ -1,12 +1,13 @@
 {
     "asset": true,
     "errorHandler": true,
+    "extra": true,
+    "leravelJsonDatabase": true,
+    "leravelVar": true,
     "mysql": true,
     "pluginHandler": true,
+    "router": true,
     "stats": true,
     "template": true,
-    "variableCleanUp": true,
-    "extra": true,
-    "leravelVar": true,
-    "router": true
+    "variableCleanUp": true
 }

@@ -1,5 +1,14 @@
 <?php
 $modules = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/app/modules.json"), true);
+$moduleFiles = scandir($_SERVER["DOCUMENT_ROOT"] . "/leravel/modules");
+foreach ($moduleFiles as $moduleFile) {
+    if ($moduleFile != "." && $moduleFile != "..") {
+        $moduleName = explode(".", $moduleFile)[0];
+        if (!isset($modules[$moduleName])) {
+            $modules[$moduleName] = true;
+        }
+    }
+}
 
 $moduleInfo = [
     "asset" => "Allows you to easily send assets with the router",
@@ -12,10 +21,25 @@ $moduleInfo = [
     "stats" => "Records users every time they use your website",
     "template" => "Adds a templating system",
     "variableCleanUp" => "Cleans all the variables used in Leravel startup",
+    "leravelJsonDatabase" => "Adds a simple key-value tree type json database",
 ];
 
 $cantDisableModules = [
     "leravelVar", "router",
+];
+
+$moduleIcons = [
+    "asset" => "Allows you to easily send assets with the router",
+    "errorHandler" => "Adds a custom error handler",
+    "extra" => "Adds some functions",
+    "leravelVar" => "Essential",
+    "mysql" => "WIP",
+    "pluginHandler" => "WIP",
+    "router" => "Essential",
+    "stats" => "Tool",
+    "template" => "Function",
+    "variableCleanUp" => "Cleans all the variables used in Leravel startup",
+    "leravelJsonDatabase" => "Adds a simple key-value tree type json database",
 ];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -52,16 +76,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <table>
                     <?php foreach ($modules as $moduleName => $moduleStatus) : ?>
                         <tr>
+                            <td><img src="<?= $moduleIcons[$moduleName] ?? "" ?>" alt="" class="module-icon"></td>
                             <td><?= $moduleName ?> <?php if (in_array($moduleName, $cantDisableModules)) {
                                                         echo '<img src="https://img.icons8.com/?size=512&id=znpDNZWhQe6p&format=png" alt="" class="lock" draggable="false">';
                                                     } ?></td>
                             <td><?= $moduleInfo[$moduleName] ?? "" ?></td>
                             <td>
                                 <?php if (!in_array($moduleName, $cantDisableModules)) : ?>
-                                    <input type="checkbox" name="<?= $moduleName ?>" <?= $moduleStatus ? 'checked' : '' ?>>
+                                    <div class="switch">
+                                        <input id="<?= $moduleName ?>switch" type="checkbox" name="<?= $moduleName ?>" <?= $moduleStatus ? 'checked' : '' ?>>
+                                        <label for="<?= $moduleName ?>switch">Toggle</label>
+                                    </div>
                                 <?php else : ?>
                                     <input type="hidden" name="<?= $moduleName ?>" value="<?= $moduleStatus ? 'on' : 'off' ?>">
-                                    <input type="checkbox" name="<?= $moduleName ?>" <?= $moduleStatus ? 'checked' : '' ?> disabled>
+                                    <input type="checkbox" name="<?= $moduleName ?>" <?= $moduleStatus ? 'checked' : '' ?> disabled style='display: none;'>
                                 <?php endif; ?>
                             </td>
                         </tr>

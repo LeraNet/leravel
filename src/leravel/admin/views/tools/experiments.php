@@ -40,16 +40,30 @@ if (isset($_POST["updateExperiments"])) {
     <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/sidebar.php" ?>
     <div class="content">
         <h1><img src='https://img.icons8.com/?size=512&id=XO5nRSypAbfH&format=png' draggable="false">Experiments Manager</h1>
-        <form action="" method="post" class="experiments_form">
-            <input type="hidden" name="updateExperiments" value="true">
-            <?php foreach ($activeExperiments as $experiment => $status) : ?>
-                <label for="<?= $experiment ?>">
-                    <input type="checkbox" name="<?= $experiment ?>" id="<?= $experiment ?>" <?= $status ? 'checked' : '' ?>>
-                    <?= $experiment ?>
-                </label><br>
-            <?php endforeach; ?>
-            <input type="submit" value="Update">
-        </form>
+        <div class="tab-content">
+            <div class="alert alert-warning">
+                <div>
+                    <h2>Warning</h2>
+                    <h3>These features are still work-in-progress. And may be complately deleted one day.</h3>
+                </div>
+            </div>
+            <br>
+            <form action="" method="post" class="experiments_form">
+                <input type="hidden" name="updateExperiments" value="true">
+                <?php foreach ($activeExperiments as $experiment => $status) : ?>
+                    <div class="data-row">
+                        <label for="<?= $experiment ?>">
+                            <?= $experiment ?>
+                        </label>
+                        <div class="switch">
+                            <input id="<?= $experiment ?>switch" type="checkbox" name="<?= $experiment ?>" <?= $status ? 'checked' : '' ?>>
+                            <label for="<?= $experiment ?>switch">Toggle</label>
+                        </div>
+                    </div><br>
+                <?php endforeach; ?>
+                <input type="submit" value="Update">
+            </form>
+        </div>
     </div>
 </body>
 

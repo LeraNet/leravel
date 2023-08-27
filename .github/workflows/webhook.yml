@@ -1,0 +1,21 @@
+name: Webhook Notification
+
+on:
+  push:
+    branches:
+      - master  # Change this to your desired branch
+      - main
+
+jobs:
+  send-webhook-notification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: "${{ secrets.WEBHOOK_URL }}"
+          DISCORD_USERNAME: "${{ github.event.pusher.name}}"
+          DISCORD_AVATAR: "https://github.com/${{ github.event.pusher.name }}.png"
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "${{ github.event.head_commit.message }}\n\n - [${{ github.event.pusher.name }}](https://github.com/${{ github.event.pusher.name }}) on [${{ github.event.repository.name }}](https://github.com/${{ github.repository }})/[master](${{ github.event.compare }})"

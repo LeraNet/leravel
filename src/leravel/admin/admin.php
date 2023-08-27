@@ -13,6 +13,13 @@ function redirect($path)
 $loggedIn = $_SESSION['loggedIn'] ?? false;
 $route = $_GET['route'] ?? "";
 
+
+if ($route == "") {
+    redirect("/");
+    exit;
+}
+
+
 $icons = array(
     "admin" => "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
     "database" => "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
@@ -26,11 +33,6 @@ $icons = array(
     "plugins" => "https://img.icons8.com/?size=512&id=LV1toaPaA7ia&format=png",
     "tools" => "https://img.icons8.com/?size=512&id=Vh44ppGKSLoR&format=png"
 );
-
-if ($route == "") {
-    redirect("/");
-    exit;
-}
 
 if ($route != "login" && $route != "captcha") {
     if ($loggedIn == null) {
