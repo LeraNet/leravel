@@ -1,6 +1,7 @@
 <?php
 
-printlog("Leravel Server Başlıyor");
+printlog("Leravel Server is Starting...");
 printlog("---------------------------------------------------------------");
 
-system(".\start.bat");
+chdir('..');
+system("php -S localhost:8000 index.php");

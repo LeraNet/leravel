@@ -6,8 +6,13 @@ function customError($errno, $errstr, $errfile, $errline)
 {
     global $Leravel;
 
-    $commonErrors = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/commonErrors.json");
-    $commonErrors = json_decode($commonErrors, true);
+
+    if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/commonErrors.json")) {
+        $commonErrors = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/commonErrors.json");
+        $commonErrors = json_decode($commonErrors, true);
+    }else{
+        $commonErrors = array();
+    }
 
     if (!isset($Leravel["settings"]["errors"]["devErrorPage"]) || $Leravel["settings"]["errors"]["devErrorPage"] == true) {
         $solution = null;

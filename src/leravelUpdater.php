@@ -1,5 +1,5 @@
 <?php
-$leravelInfo = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/leravel.json"), true);
+$leravelInfo = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json"), true);
 $leravelVersion = $leravelInfo["version"] ?? "Leravel Version Not Found";
 
 $url = "https://api.github.com/repos/lera2od/leravel/releases/latest";

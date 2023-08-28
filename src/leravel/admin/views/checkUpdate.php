@@ -1,6 +1,6 @@
 <?php 
 
-$leravelInfo = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/leravel.json"), true);
+$leravelInfo = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json"), true);
 
 if(!isset($leravelInfo["lastUpdateCheck"])){
     $leravelInfo["lastUpdateCheck"] = 0;

@@ -1,7 +1,7 @@
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/toast.php";
 
-$commonErrors = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/commonErrors.json"), true) ?? array();
+$commonErrors = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/commonErrors.json"), true) ?? array();
 $errIndentifyJson = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/tools/erridentify.json"), true);
 
 if ($errIndentifyJson["lastCount"] == "" || $errIndentifyJson["lastCheck"] < time() - 86400 || isset($_GET["check"])) {
@@ -16,7 +16,7 @@ if ($errIndentifyJson["lastCount"] == "" || $errIndentifyJson["lastCheck"] < tim
 $githubCount = $errIndentifyJson["lastCount"];
 
 if (isset($_GET["download"])) {
-    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/commonErrors.json", file_get_contents("https://raw.githubusercontent.com/lera2od/leravel/master/data/commonErrors.json"));
+    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/commonErrors.json", file_get_contents("https://raw.githubusercontent.com/lera2od/leravel/master/data/commonErrors.json"));
     header("Location: ?admin&route=tool&tool=erridentify&success");
     exit();
 }

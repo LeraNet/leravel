@@ -1,6 +1,6 @@
 <?php
 
-$leravelInfo = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/leravel.json"), true);
+$leravelInfo = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json"), true);
 $leravelVersion = $leravelInfo["version"];
 
 if (!isset($leravelInfo["lastMotdCheck"]) || $leravelInfo["lastMotdCheck"] < time() - 86400) {
@@ -12,7 +12,7 @@ if (!isset($leravelInfo["lastMotdCheck"]) || $leravelInfo["lastMotdCheck"] < tim
     $leravelInfo["motd"] = $motd;
     $leravelInfo["news"] = json_encode($news);
 
-    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/leravel.json", json_encode($leravelInfo));
+    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json", json_encode($leravelInfo));
 } else {
     $news = json_decode($leravelInfo["news"], true);
     $motd = $leravelInfo["motd"];

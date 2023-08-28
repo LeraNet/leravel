@@ -5,7 +5,7 @@ if(!file_exists($_SERVER["DOCUMENT_ROOT"] . "/app/stats.json")) {
 }
 
 $stats = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/app/stats.json"), true);
-$leraveljson = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/leravel.json"), true);
+$leraveljson = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json"), true);
 
 if(isset($leraveljson["statWeek"]) && $leraveljson["statWeek"] == date("W")) {
     $week = date("W");
@@ -18,12 +18,12 @@ if(isset($leraveljson["statWeek"]) && $leraveljson["statWeek"] == date("W")) {
     file_put_contents($file, json_encode($stats));
     file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/app/stats.json", json_encode(array()));
     $leraveljson["statWeek"] = date("W") + 1;
-    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/leravel.json", json_encode($leraveljson));
+    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json", json_encode($leraveljson));
 }
 
 if(!isset($leraveljson["statWeek"])) {
     $leraveljson["statWeek"] = date("W") + 1;
-    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/leravel.json", json_encode($leraveljson));
+    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json", json_encode($leraveljson));
 }
 
 $os = [
