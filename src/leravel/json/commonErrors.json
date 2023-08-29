@@ -14,7 +14,7 @@
     {
         "error" : "file_get_contents(",
         "file" : "\\admin\\admin.php",
-        "solution" : "This may be caused by a bunch of things.<br>This indicates that a json file that is required for the admin panel to work is missing.<br>Please check if the file exists and if it does, check if the file is readable by the server.<br> If the error is caused by adminAccounts.json this means you are not migrated to the new admin accounts system.",
+        "solution" : "This indicates that a json file that is required for the admin panel to work is missing.<br>Please check if the file exists and if it does, check if the file is readable by the server.<br> If the error is caused by adminAccounts.json this means you are not migrated to the new admin accounts system. <a href='https://github.com/lera2od/leravel/wiki/Migrating-to-Leravel-2.1-Admin-Accounts-System'Migrate from ini to json</a>",
         "errorName" : "adminJsonError"
     },
     {

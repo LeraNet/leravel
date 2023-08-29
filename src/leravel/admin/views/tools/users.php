@@ -106,6 +106,7 @@ if (isset($_POST["action"])) {
                         ?>
                             <input type="checkbox" name="perms[]" value="<?= $perm ?>" <?= $checked ?>> <?= $perm ?><br>
                         <?php endforeach; ?>
+                        <br>
                         <input type="submit" value="Save">
                     </form>
                 </fieldset>
