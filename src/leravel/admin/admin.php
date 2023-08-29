@@ -1,5 +1,28 @@
 <?php
-//average lera code :DDDDD
+
+$loggedIn = $_SESSION['username'] ?? null;
+$route = $_GET['route'] ?? "/";
+$icons = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/icons.json"), true);
+$adminAccounts = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccounts.json"), true);
+$allPerms = [];
+$allTools = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/views/tools/tools.json"), true);
+$toolPerms = [];
+
+foreach ($allTools as $category) {
+    foreach ($category["tools"] as $tool) {
+        $toolPerms[$tool["file"]] = $tool["perm"];
+    }
+}
+
+
+foreach ($allTools as $category) {
+    foreach ($category["tools"] as $tool) {
+        if(!in_array($tool["perm"], $allPerms)) {
+            $allPerms[] = $tool["perm"];
+        }
+    }
+}
+
 if (!get_loaded_extensions('gd') && !function_exists('gd_info')) {
     echo "You can't use the admin features because gd plugin is not downloaded. We use gd to generate the captcha image. Please download the gd extention. <a href='https://www.php.net/manual/en/image.setup.php'>[ Tutorial From PHP Documentation ]</a>";
     exit;
@@ -10,29 +33,57 @@ function redirect($path)
     header("Location: /?admin&route=$path");
 }
 
-$loggedIn = $_SESSION['loggedIn'] ?? false;
-$route = $_GET['route'] ?? "";
+function checkPerm($perm) {
+    $adminAccounts = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccounts.json"), true);
 
+    $allPerms = [];
+    $allTools = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/views/tools/tools.json"), true);
 
-if ($route == "") {
-    redirect("/");
-    exit;
+    foreach ($allTools as $category) {
+        foreach ($category["tools"] as $tool) {
+            if(!in_array($tool["perm"], $allPerms)) {
+                $allPerms[] = $tool["perm"];
+            }
+        }
+    }
+
+    $perms = [];
+    foreach ($adminAccounts as $account) {
+        if ($account["username"] === $_SESSION["username"] && $account["password"] === $_SESSION["password"]) {
+            $perms = $account["permissions"];
+        }
+    }
+    if($perm == "NONE") {
+        return true;
+    }
+    if (!$_SESSION["loggedIn"]) {
+        return false;
+    }
+    if(!in_array($perm, $allPerms)) {
+        return false;
+    }
+    if(in_array("ROOT", $perms)) {
+        return true;
+    }
+    if(in_array($perm, $perms)) {
+        return true;
+    }
+    return false;
 }
 
-
-$icons = array(
-    "admin" => "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
-    "database" => "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
-    "localization" => "https://img.icons8.com/?size=512&id=9m2yplxz2fr3&format=png",
-    "settings" => "https://img.icons8.com/?size=512&id=s5NUIabJrb4C&format=png",
-    "update" => "https://img.icons8.com/?size=512&id=dkvPGMU3MKpu&format=png",
-    "table" => "https://img.icons8.com/?size=512&id=KZHjwwenS7oK&format=png",
-    "language" => "https://img.icons8.com/?size=512&id=mEjjp0oFPnvc&format=png",
-    "home" => "https://img.icons8.com/?size=512&id=wFfu6zXx15Yk&format=png",
-    "stats" => "https://img.icons8.com/?size=512&id=1TCX2ww987mj&format=png",
-    "plugins" => "https://img.icons8.com/?size=512&id=LV1toaPaA7ia&format=png",
-    "tools" => "https://img.icons8.com/?size=512&id=Vh44ppGKSLoR&format=png"
-);
+function hasAccess($requiredPerm = "ROOT")
+{
+    global $loggedIn;
+    if (!$_SESSION["loggedIn"]) {
+        redirect("login");
+        exit;
+    }
+    if(!checkPerm($requiredPerm)) {
+        redirect("noaccess");
+        exit;
+    }
+    
+}
 
 if ($route != "login" && $route != "captcha") {
     if ($loggedIn == null) {
@@ -45,24 +96,9 @@ if ($route != "login" && $route != "captcha") {
         redirect("login");
         exit;
     }
-
-    $account = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccount.ini");
-    if ($account["username"] != $_SESSION["username"] || $account["password"] != $_SESSION["password"]) {
-        session_destroy();
-        redirect("login");
-        exit;
-    }
 }
 
 switch ($route) {
-    case "lsuccess":
-        if ($loggedIn) {
-            include "views/loginSuccess.php";
-        } else {
-            redirect("login");
-            exit;
-        }
-        break;
     case "login":
         if ($loggedIn) {
             redirect("/");
@@ -131,6 +167,10 @@ switch ($route) {
             if(!isset($_GET["tool"])) {
                 include "views/tools/index.php";
             }else{
+                if(!checkPerm($toolPerms[$_GET["tool"]])) {
+                    redirect("noaccess");
+                    exit;
+                }
                 include "views/tools/{$_GET["tool"]}.php";
             }
         } else {
@@ -141,6 +181,14 @@ switch ($route) {
     case "update":
         if ($loggedIn) {
             include "views/update.php";
+        } else {
+            redirect("login");
+            exit;
+        }
+        break;
+    case "noaccess":
+        if ($loggedIn) {
+            include "views/noaccess.php";
         } else {
             redirect("login");
             exit;

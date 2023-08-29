@@ -12,10 +12,10 @@
         "errorName" : "databaseAccessDenied"
     },
     {
-        "error" : "parse_ini_file(",
+        "error" : "file_get_contents(",
         "file" : "\\admin\\admin.php",
-        "solution" : "There is 2 probable causes.<br> 1: Admin credentials file(<b>account.ini</b>) is not found.<br> 2: <b>account.ini</b> moved into <b>/app/adminAccount.ini</b> in <a href='https://github.com/lera2od/leravel/releases/tag/1.3'>leravel v1.3</a> update. If adminAccount.ini isn't in app folder it may be the cause.",
-        "errorName" : "adminCredentialsNotFound"
+        "solution" : "This may be caused by a bunch of things.<br>This indicates that a json file that is required for the admin panel to work is missing.<br>Please check if the file exists and if it does, check if the file is readable by the server.<br> If the error is caused by adminAccounts.json this means you are not migrated to the new admin accounts system.",
+        "errorName" : "adminJsonError"
     },
     {
         "error" : "Uncaught mysqli_sql_exception",

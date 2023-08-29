@@ -1,3 +1,6 @@
+<?php 
+hasAccess("STATS");
+?>
 <?php
 if (!file_exists($_SERVER["DOCUMENT_ROOT"] . "/app/stats.json")) {
     file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/app/stats.json", json_encode(array()));

@@ -1,3 +1,6 @@
+<?php 
+hasAccess("DATABASE_MANAGER");
+?>
 <?php
 
 if ($Leravel["settings"]["database"]["enabled"] != "true" && $Leravel["settings"]["database"]["enabled"] != "1") : ?>

@@ -35,50 +35,58 @@ $navigation = [
         "title" => "Home",
         "icon" => "home",
         "uri" => "/?admin&route=/",
-        "enabled" => true
+        "enabled" => true,
+        "perm" => "NONE"
     ],
     "Database" => [
         "title" => "Database",
         "icon" => "database",
         "uri" => "/?admin&route=database",
-        "enabled" => true
+        "enabled" => true,
+        "perm" => "DATABASE_MANAGER"
     ],
     "Localization" => [
         "title" => "Localization",
         "icon" => "localization",
         "uri" => "/?admin&route=localization",
-        "enabled" => true
+        "enabled" => true,
+        "perm" => "LOCALIZATION_MANAGER"
     ],
     "Stats" => [
         "title" => "Stats",
         "icon" => "stats",
         "uri" => "/?admin&route=stats",
-        "enabled" => true
+        "enabled" => true,
+        "perm" => "STATS"
     ],
     "Plugins" => [
         "title" => "Plugins",
         "icon" => "plugins",
         "uri" => "/?admin&route=plugins",
         "enabled" => false,
-        "experiment" => "pluginsmanager_07_23"
+        "experiment" => "pluginsmanager_07_23",
+        "perm" => "PLUGINS_MANAGER"
     ],
     "Tools" => [
         "title" => "Tools",
         "icon" => "tools",
         "uri" => "/?admin&route=tool",
-        "enabled" => true
+        "enabled" => true,
+        "perm" => "NONE"
     ],
     "Settings" => [
         "title" => "Settings",
         "icon" => "settings",
         "uri" => "/?admin&route=settings",
-        "enabled" => true
+        "enabled" => true,
+        "perm" => "SETTINGS_MANAGER"
     ],
     "Update" => [
         "title" => "Update",
         "icon" => "update",
         "uri" => "/?admin&route=update",
-        "enabled" => true
+        "enabled" => true,
+        "perm" => "UPDATER"
     ]
 ];
 ?>
@@ -93,7 +101,7 @@ $navigation = [
             }
             ?>
 
-            <?php if ($isEnabled) : ?>
+            <?php if ($isEnabled && checkPerm($item["perm"])) : ?>
                 <li>
                     <a href="<?= $item['uri'] ?>">
                         <img src="<?= $icons[$item['icon']] ?>" draggable="false">

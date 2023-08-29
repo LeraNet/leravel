@@ -1,3 +1,6 @@
+<?php 
+hasAccess("UPDATER");
+?>
 <?php
 require "include/toast.php";
 

@@ -44,6 +44,16 @@ if (isset($_GET["success"])) {
         <div class="tab-content">
             <h2>Error Identifier</h2>
             <p>Error Identifier lets you easily understand any error related to Leravel or any Leravel library.</p>
+            <?php 
+            $leravelJson = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json"), true);
+            $leravelVersion = $leravelJson["version"];
+            $leravelLatest = $leravelJson["latestVersion"];
+
+            if($leravelVersion != $leravelLatest) {
+                echo "<div class='alert alert-warning'>You are using an old version of Leravel. Updating the error identifier may(probably) provide wrong solutions.</div><br>";
+            }
+
+            ?>
             <table>
                 <tr>
                     <th>From</th>

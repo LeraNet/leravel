@@ -27,6 +27,9 @@ $tools = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/adm
                     <p><img src="<?= $category["icon"] ?>" alt="" draggable="false"><?= $category["title"] ?></p>
                     <?php
                     foreach ($category["tools"] as $tool) :
+                        if(!checkPerm($tool["perm"])) {
+                            continue;
+                        }
                         if ($tool["type"] == "int") :
                     ?>
                             <li>↳ <a href="<?= "?admin&route=tool&tool=" . $tool["file"]; ?>"><img src="<?= $tool["icon"] ?>" alt="" draggable="false"><?= $tool["title"] ?></a></li>

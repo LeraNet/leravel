@@ -1,6 +1,8 @@
+<?php 
+hasAccess("SETTINGS_MANAGER");
+?>
 <?php
 $settings = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/app/settings.json"), true);
-$acoount = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/app/adminAccount.ini");
 require "include/toast.php";
 
 $vocabulary = array(
@@ -103,8 +105,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "save") {
 }
 
 $tabs = array(
-    "settings" => "settings.json",
-    "account" => "adminAccount.ini"
+    "settings" => "settings.json"
 );
 
 $currentTab = $_GET["tab"] ?? "settings.json";
@@ -159,32 +160,6 @@ $currentTab = $_GET["tab"] ?? "settings.json";
                         </form>
                     </div>
                 <?php endforeach; ?>
-            </div>
-            <?php elseif($currentTab == "adminAccount.ini") : ?>
-            <h2>adminAccount.ini</h2>
-            <div class="tab-content">
-                <div class="tab-pane" id="account">
-                    <h2>Account</h2>
-                    <form action="?admin&route=settings" method="post">
-                        <input type="hidden" name="action" value="save">
-                        <input type="hidden" name="file" value="/app/adminAccount.ini">
-                        <input type="hidden" name="type" value="ini">
-                        <table>
-                            <tr>
-                                <td>Username</td>
-                                <td><input type="text" name="data[username]" value="<?= $acoount["username"] ?>"></td>
-                                <td><span class="syntax">The username for the admin panel.</span></td>
-                            </tr>
-                            <tr>
-                                <td>Password</td>
-                                <td><input type="password" name="data[password]" value="<?= $acoount["password"] ?>"></td>
-                                <td><span class="syntax">The password for the admin panel.</span></td>
-                            </tr>
-                        </table>
-                        <br>
-                        <input type="submit" value="Save">
-                    </form>
-                </div>
             </div>
             <?php else : ?>
             <h2>Select a file</h2>

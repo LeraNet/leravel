@@ -1,9 +1,9 @@
 {
     "version": "2.1",
     "statWeek": 31,
-    "lastMotdCheck": 1693078405,
+    "lastMotdCheck": 1693258823,
     "motd": "Enes batur kaza an\u0131",
     "news": "[{\"title\":\"Leravel v2.1 is comming!\",\"content\":\"An insane update is comming \\ud83e\\udd2f\\ud83e\\udd2f\\ud83e\\udd2f\",\"date\":\"29.07.2023\"},{\"title\":\"Leravel v2.0!\",\"content\":\"Leravel CLI and other new stuff is here!\",\"date\":\"12.05.2023\"}]",
-    "lastUpdateCheck": 1693078407,
+    "lastUpdateCheck": 1693307436,
     "latestVersion": "2.0"
 }

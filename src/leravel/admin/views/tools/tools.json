@@ -7,50 +7,64 @@
         "title": "Database Manager",
         "icon": "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
         "file": "?admin&route=database",
-        "type": "ext"
+        "type": "ext",
+        "perm": "DATABASE_MANAGER"
       },
       {
         "title": "Localization Manager",
         "icon": "https://img.icons8.com/?size=512&id=9m2yplxz2fr3&format=png",
         "file": "?admin&route=localization",
-        "type": "ext"
+        "type": "ext",
+        "perm": "LOCALIZATION_MANAGER"
       },
       {
         "title": "Plugin Manager",
         "icon": "https://img.icons8.com/?size=512&id=LV1toaPaA7ia&format=png",
         "file": "?admin&route=plugins",
         "type": "experiment",
-        "experiment": "pluginsmanager_07_23"
+        "experiment": "pluginsmanager_07_23",
+        "perm": "PLUGIN_MANAGER"
       },
       {
         "title": "Modules Manager",
         "icon": "https://img.icons8.com/?size=512&id=jzaaE6lUq9fx&format=png",
         "file": "modules",
-        "type": "int"
+        "type": "int",
+        "perm": "TOOL_MODULES_MANAGER"
       },
       {
         "title": "Experiments Manager",
         "icon": "https://img.icons8.com/?size=512&id=XO5nRSypAbfH&format=png",
         "file": "experiments",
-        "type": "int"
+        "type": "int",
+        "perm": "TOOL_EXPERIMENTS_MANAGER"
       },
       {
         "title": "Settings Manager",
         "icon": "https://img.icons8.com/?size=512&id=s5NUIabJrb4C&format=png",
         "file": "?admin&route=settings",
-        "type": "ext"
+        "type":  "ext",
+        "perm": "SETTINGS_MANAGER"
+      },{
+        "title": "Users Manager",
+        "icon": "https://img.icons8.com/?size=512&id=Oyh4DCshbhyf&format=png",
+        "file": "users",
+        "type": "int",
+        "perm": "USERS_MANAGER"
       },
       {
         "title": "Error Identifier",
         "icon": "https://img.icons8.com/?size=512&id=4Ywlu1XtAw14&format=png",
         "file": "erridentify",
-        "type": "int"
+        "type": "int",
+        "perm": "TOOL_ERROR_IDENTIFIER"
       },
       {
         "title": "Updater",
         "icon": "https://img.icons8.com/?size=512&id=dkvPGMU3MKpu&format=png",
         "file": "?admin&route=update",
-        "type": "ext"
+        "type": "ext",
+        "perm": "UPDATER"
       }
     ]
   },
@@ -63,13 +77,15 @@
         "icon": "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
         "file": "?admin&route=tool&tool=leraveljsondb",
         "type": "experiment",
-        "experiment": "ljsondbeditor_08_23"
+        "experiment": "ljsondbeditor_08_23",
+        "perm": "TOOL_LJSONDB_MANAGER"
       },
       {
         "title": "Static Site Generator",
         "icon": "https://img.icons8.com/?size=512&id=QwEwqmJDk4Za&format=png",
         "file": "staticSiteGenerator",
-        "type": "int"
+        "type": "int",
+        "perm": "TOOL_STATIC_SITE_GENERATOR"
       }
     ]
   }

@@ -1,0 +1,27 @@
+[
+    {
+        "username": "lera",
+        "password": "test",
+        "permissions": [
+            "ROOT"
+        ]
+    },
+    {
+        "username": "test",
+        "password": "test",
+        "permissions": [
+            "ROOT"
+        ]
+    },
+    {
+        "username": "anan",
+        "password": "za",
+        "permissions": [
+            "DATABASE_MANAGER",
+            "SETTINGS_MANAGER",
+            "TOOL_ERROR_IDENTIFIER",
+            "UPDATER",
+            "TOOL_LJSONDB_MANAGER"
+        ]
+    }
+]

@@ -6,7 +6,7 @@ if(!isset($leravelInfo["lastUpdateCheck"])){
     $leravelInfo["lastUpdateCheck"] = 0;
 }
 
-if ($leravelInfo["lastUpdateCheck"] < time() - 86400) {
+if (time() - $leravelInfo["lastUpdateCheck"] > 3600) {
 
     $url = "https://api.github.com/repos/lera2od/leravel/releases/latest";
 
@@ -40,12 +40,12 @@ if ($leravelInfo["lastUpdateCheck"] < time() - 86400) {
     $latestVersion = str_replace("v", "", $latestVersion);
     $leravelVersion = $leravelInfo["version"];
     if($latestVersion > $leravelVersion){
-        toast("New update available", "success");
+        toast("New update available", "warning");
     }else{
         toast("You are up to date", "success");
     }
     $leravelInfo["lastUpdateCheck"] = time();
     $leravelInfo["latestVersion"] = $latestVersion;
 
-    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/leravel.json", json_encode($leravelInfo, JSON_PRETTY_PRINT));
+    file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json", json_encode($leravelInfo, JSON_PRETTY_PRINT));
 }

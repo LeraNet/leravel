@@ -1,3 +1,6 @@
+<?php 
+hasAccess("PLUGIN_MANAGER");
+?>
 <?php
 
 $tab = $_GET["tab"] ?? "pluginstore";

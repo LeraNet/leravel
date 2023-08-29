@@ -2,37 +2,36 @@
 
 include "include/toast.php";
 
-if (isset($_POST["username"])) {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $captcha = $_POST['captcha'] ?? '';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_POST["username"], $_POST["password"], $_POST["captcha"])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $captcha = $_POST['captcha'];
 
-    $account = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccount.ini");
-    $adminUsername = $account['username'];
-    $adminPassword = $account['password'];
+        if ($captcha == $_SESSION["captcha"]) {
+            $adminAccounts = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccounts.json"), true);
+            
+            foreach ($adminAccounts as $account) {
+                if ($account["username"] === $username && $account["password"] === $password) {
+                    $_SESSION["username"] = $username;
+                    $_SESSION["password"] = $password;
+                    $_SESSION["loggedIn"] = true;
+                    $_SESSION["permissions"] = $account["permissions"];
+                    redirect("/");
+                    toast("Logged in successfully", "success");
+                }
+                echo $account["username"] . " " . $account["password"] . "<br>";
+            }
 
-    $captchaSuccess = false;
-    if ($Leravel["settings"]["admin"]["captcha"] == "1" || $Leravel["settings"]["admin"]["captcha"] == "true") {
-        if ($captcha != $_SESSION['captcha']) {
-            $_SESSION["captcha"] = hash("sha256", random_int(0, 100));
-            $captchaSuccess = false;
+            toast("Wrong username or password", "error");
         } else {
-            $captchaSuccess = true;
+            toast("Wrong captcha", "error");
         }
     } else {
-        $captchaSuccess = true;
-    }
-
-    if ($username == $adminUsername && $password == $adminPassword && $captchaSuccess == true) {
-        $_SESSION['loggedIn'] = true;
-        $_SESSION['username'] = $username;
-        $_SESSION['password'] = $password;
-        redirect("Location: /?admin&route=/&loginsuccess");
-        exit;
-    } else {
-        toast("Invalid username or password", "error");
+        toast("Missing fields", "error");
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

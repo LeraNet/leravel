@@ -1,3 +1,6 @@
+<?php 
+hasAccess("LOCALIZATION_MANAGER");
+?>
 <?php
 
 include "include/toast.php";
