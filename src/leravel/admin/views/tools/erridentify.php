@@ -50,7 +50,7 @@ if (isset($_GET["success"])) {
             $leravelLatest = $leravelJson["latestVersion"];
 
             if($leravelVersion != $leravelLatest) {
-                echo "<div class='alert alert-warning'>You are using an old version of Leravel. Updating the error identifier may(probably) provide wrong solutions.</div><br>";
+                echo "<div class='alert alert-warning'>You are using a different version of Leravel then the latest version. Updating your commonErros.json file may cause errors.</div><br>";
             }
 
             ?>

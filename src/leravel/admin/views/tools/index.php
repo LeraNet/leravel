@@ -22,6 +22,16 @@ $tools = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/adm
             <h2>Tools</h2>
             <?php
             foreach ($tools as $category) :
+                $hasPerm = false;
+                foreach ($category["tools"] as $tool) {
+                    if (checkPerm($tool["perm"])) {
+                        $hasPerm = true;
+                        break;
+                    }
+                }
+                if (!$hasPerm) {
+                    continue;
+                }
             ?>
                 <ul class="tools">
                     <p><img src="<?= $category["icon"] ?>" alt="" draggable="false"><?= $category["title"] ?></p>
@@ -36,9 +46,12 @@ $tools = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/adm
                         <?php elseif ($tool["type"] == "ext") : ?>
 
                             <li>↳ <a href="<?= $tool["file"]; ?>"><img src="<?= $tool["icon"] ?>" alt="" draggable="false"><?= $tool["title"] ?></a></li>
-                        <?php elseif ($tool["type"] == "experiment" && isExperimentActive($tool["experiment"], $activeExperiments)) :
+                        <?php elseif ($tool["type"] == "experimentExt" && isExperimentActive($tool["experiment"], $activeExperiments)) :
                         ?>
                             <li>↳ <a href="<?= $tool["file"]; ?>"><img src="<?= $tool["icon"] ?>" alt="" draggable="false"><?= $tool["title"] ?></a></li>
+                        <?php elseif ($tool["type"] == "experimentInt" && isExperimentActive($tool["experiment"], $activeExperiments)) :
+                        ?>
+                            <li>↳ <a href="<?= "?admin&route=tool&tool=" . $tool["file"]; ?>"><img src="<?= $tool["icon"] ?>" alt="" draggable="false"><?= $tool["title"] ?></a></li>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>

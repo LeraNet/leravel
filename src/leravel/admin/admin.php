@@ -1,213 +1,110 @@
 <?php
 
-$loggedIn = $_SESSION['username'] ?? null;
-$route = $_GET['route'] ?? "/";
-$icons = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/icons.json"), true);
-$adminAccounts = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccounts.json"), true);
-$allPerms = [];
-$allTools = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/views/tools/tools.json"), true);
-$toolPerms = [];
-
-foreach ($allTools as $category) {
-    foreach ($category["tools"] as $tool) {
-        $toolPerms[$tool["file"]] = $tool["perm"];
-    }
-}
-
-
-foreach ($allTools as $category) {
-    foreach ($category["tools"] as $tool) {
-        if(!in_array($tool["perm"], $allPerms)) {
-            $allPerms[] = $tool["perm"];
-        }
-    }
-}
-
 if (!get_loaded_extensions('gd') && !function_exists('gd_info')) {
     echo "You can't use the admin features because gd plugin is not downloaded. We use gd to generate the captcha image. Please download the gd extention. <a href='https://www.php.net/manual/en/image.setup.php'>[ Tutorial From PHP Documentation ]</a>";
     exit;
 }
 
-function redirect($path)
-{
-    header("Location: /?admin&route=$path");
-}
+require $_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/functions.php";
 
-function checkPerm($perm) {
-    $adminAccounts = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccounts.json"), true);
+$loggedIn = $_SESSION['username'] ?? null;
+$route = $_GET['route'] ?? "/";
 
-    $allPerms = [];
-    $allTools = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/views/tools/tools.json"), true);
+$icons = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/icons.json"), true);
+$adminAccounts = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccounts.json"), true);
+$allTools = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/views/tools/tools.json"), true);
 
-    foreach ($allTools as $category) {
-        foreach ($category["tools"] as $tool) {
-            if(!in_array($tool["perm"], $allPerms)) {
-                $allPerms[] = $tool["perm"];
-            }
+$allPerms = [];
+$toolPerms = [];
+
+foreach ($allTools as $category) {
+    foreach ($category["tools"] as $tool) {
+        $toolPerms[$tool["file"]] = $tool["perm"];
+        if (!in_array($tool["perm"], $allPerms)) {
+            $allPerms[] = $tool["perm"];
         }
-    }
-
-    $perms = [];
-    foreach ($adminAccounts as $account) {
-        if ($account["username"] === $_SESSION["username"] && $account["password"] === $_SESSION["password"]) {
-            $perms = $account["permissions"];
-        }
-    }
-    if($perm == "NONE") {
-        return true;
-    }
-    if (!$_SESSION["loggedIn"]) {
-        return false;
-    }
-    if(!in_array($perm, $allPerms)) {
-        return false;
-    }
-    if(in_array("ROOT", $perms)) {
-        return true;
-    }
-    if(in_array($perm, $perms)) {
-        return true;
-    }
-    return false;
-}
-
-function hasAccess($requiredPerm = "ROOT")
-{
-    global $loggedIn;
-    if (!$_SESSION["loggedIn"]) {
-        redirect("login");
-        exit;
-    }
-    if(!checkPerm($requiredPerm)) {
-        redirect("noaccess");
-        exit;
-    }
-    
-}
-
-if ($route != "login" && $route != "captcha") {
-    if ($loggedIn == null) {
-        redirect("login");
-        exit;
-    }
-
-    if (!isset($_SESSION["username"]) || !isset($_SESSION["password"])) {
-        session_destroy();
-        redirect("login");
-        exit;
     }
 }
 
 switch ($route) {
     case "login":
-        if ($loggedIn) {
+        if (isset($_SESSION["loggedIn"])) {
             redirect("/");
             exit;
         }
         include "views/login.php";
         break;
     case "captcha":
-        include "views/captcha.php";
-        break;
-    case "stats":
-        if ($loggedIn) {
-            include "views/stats.php";
-        } else {
-            redirect("login");
-            exit;
+        if($_SERVER["REQUEST_METHOD"] == "GET") {
+            include "views/captcha.php";
+        }else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["captcha"])) {
+                if ($_SESSION["captcha"] == $_POST["captcha"]) {
+                    $_SESSION["captchaPassed"] = true;
+                    echo "true";
+                } else {
+                    $_SESSION["captchaPassed"] = false;
+                    unset($_SESSION["captcha"]);
+                    echo "false";
+                }
+            }
         }
         break;
+    case "stats":
+        checkLogin();
+        include "views/stats.php";
+        break;
     case "logout":
+        checkLogin();
         session_destroy();
         redirect("login");
         exit;
     case "css":
-        if ($loggedIn) {
-            header("Content-Type: text/css");
-            include "views/style.css";
-        } else {
-            redirect("login");
-            exit;
-        }
+        checkLogin();
+        header("Content-Type: text/css");
+        include "views/style.css";
         break;
     case "database":
-        if ($loggedIn) {
-            include "views/database.php";
-        } else {
-            redirect("login");
-            exit;
-        }
+        checkLogin();
+        include "views/database.php";
         break;
     case "localization":
-        if ($loggedIn) {
-            include "views/localization.php";
-        } else {
-            redirect("login");
-            exit;
-        }
+        checkLogin();
+        include "views/localization.php";
         break;
     case "settings":
-        if ($loggedIn) {
-            include "views/settings.php";
-        } else {
-            redirect("login");
-            exit;
-        }
+        checkLogin();
+        include "views/settings.php";
         break;
     case "plugins":
-        if ($loggedIn) {
-            include "views/plugins.php";
-        } else {
-            redirect("login");
-            exit;
-        }
+        checkLogin();
+        include "views/plugins.php";
         break;
     case "tool":
-        if ($loggedIn) {
-            if(!isset($_GET["tool"])) {
-                include "views/tools/index.php";
-            }else{
-                if(!checkPerm($toolPerms[$_GET["tool"]])) {
-                    redirect("noaccess");
-                    exit;
-                }
-                include "views/tools/{$_GET["tool"]}.php";
-            }
+        checkLogin();
+        if (!isset($_GET["tool"])) {
+            include "views/tools/index.php";
         } else {
-            redirect("login");
-            exit;
+            if (!checkPerm($toolPerms[$_GET["tool"]])) {
+                redirect("noaccess");
+                exit;
+            }
+            include "views/tools/{$_GET["tool"]}.php";
         }
         break;
     case "update":
-        if ($loggedIn) {
-            include "views/update.php";
-        } else {
-            redirect("login");
-            exit;
-        }
+        checkLogin();
+        include "views/update.php";
         break;
     case "noaccess":
-        if ($loggedIn) {
-            include "views/noaccess.php";
-        } else {
-            redirect("login");
-            exit;
-        }
+        checkLogin();
+        include "views/noaccess.php";
         break;
     case "/":
-        if ($loggedIn) {
-            include "views/index.php";
-        } else {
-            redirect("login");
-            exit;
-        }
+        checkLogin();
+        include "views/index.php";
         break;
     default:
-        if ($loggedIn) {
-            include "views/404.php";
-        } else {
-            redirect("login");
-            exit;
-        }
+        include "views/404.php";
         break;
 }

@@ -38,7 +38,7 @@ if (isset($_POST["action"])) {
         header("Location: ?admin&route=tool&tool=users&user=" . $user["username"]);
     }
     if ($_POST["action"] == "editPerms") {
-        $perms = $_POST["perms"];
+        $perms = $_POST["perms"] ?? [];
 
         $adminAccounts[array_search($user["username"], array_column($adminAccounts, "username"))] = [
             "username" => $user["username"],
@@ -78,7 +78,11 @@ if (isset($_POST["action"])) {
         </div>
         <div class="tab-content">
             <?php if ($action == "edit") { ?>
-                <h1><?= $user["username"] ?></h1>
+                <h1><?php
+                    $fancyName = $user["username"];
+                    $fancyName[0] = strtoupper($fancyName[0]);
+                    echo $fancyName;
+                    ?></h1>
                 <fieldset>
                     <legend>User Info</legend>
                     <form action="" method="post">
@@ -88,27 +92,39 @@ if (isset($_POST["action"])) {
                         <input type="submit" value="Save">
                     </form>
                 </fieldset>
+                <br>
                 <fieldset>
                     <legend>Permissions</legend>
-                    <form action="" method="post">
-                        <input type="hidden" name="action" value="editPerms">
-                        <?php 
-                        if(in_array("ROOT", $user["permissions"])) {
-                            echo "<input type='checkbox' name='perms[]' value='ROOT' checked> ROOT<br>";
-                        } else {
-                            echo "<input type='checkbox' name='perms[]' value='ROOT'> ROOT<br>";
-                        }
-                        foreach ($allPerms as $perm) :
-                            $checked = "";
-                            if (in_array($perm, $user["permissions"])) {
-                                $checked = "checked";
+                    <?php if ($user["username"] == $_SESSION["username"]) { ?>
+                        <div class="alert alert-warning">
+                            <p>You can't edit yourself.</p>
+                        </div>
+                    <?php } else { ?>
+                        <form action="" method="post">
+                            <input type="hidden" name="action" value="editPerms">
+                            <?php
+                            sort($allPerms);
+                            $disableAll = "";
+                            if (in_array("ROOT", $user["permissions"])) {
+                                $disableAll = "disabled";
+                                echo "<input type='checkbox' name='perms[]' value='ROOT' checked> ROOT<br>";
+                            } else {
+                                echo "<input type='checkbox' name='perms[]' value='ROOT'> ROOT<br>";
                             }
-                        ?>
-                            <input type="checkbox" name="perms[]" value="<?= $perm ?>" <?= $checked ?>> <?= $perm ?><br>
-                        <?php endforeach; ?>
-                        <br>
-                        <input type="submit" value="Save">
-                    </form>
+                            foreach ($allPerms as $perm) :
+                                $checked = "";
+                                if (in_array($perm, $user["permissions"])) {
+                                    $checked = "checked";
+                                }
+                                if ($perm == "ROOT") continue;
+                            ?>
+                                <input type="checkbox" name="perms[]" value="<?= $perm ?>" <?= $checked ?> <?= $disableAll ?>>
+                                <?= $perm ?><br>
+                            <?php endforeach; ?>
+                            <br>
+                            <input type="submit" value="Save">
+                        </form>
+                    <?php } ?>
                 </fieldset>
             <?php } else if ($action == "new") { ?>
                 <h1>New user</h1>

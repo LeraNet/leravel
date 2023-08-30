@@ -18,12 +18,12 @@
         "perm": "LOCALIZATION_MANAGER"
       },
       {
-        "title": "Plugin Manager",
+        "title": "Plugins Manager",
         "icon": "https://img.icons8.com/?size=512&id=LV1toaPaA7ia&format=png",
         "file": "?admin&route=plugins",
-        "type": "experiment",
+        "type": "experimentExt",
         "experiment": "pluginsmanager_07_23",
-        "perm": "PLUGIN_MANAGER"
+        "perm": "PLUGINS_MANAGER"
       },
       {
         "title": "Modules Manager",
@@ -50,7 +50,7 @@
         "icon": "https://img.icons8.com/?size=512&id=Oyh4DCshbhyf&format=png",
         "file": "users",
         "type": "int",
-        "perm": "USERS_MANAGER"
+        "perm": "ROOT"
       },
       {
         "title": "Error Identifier",
@@ -75,8 +75,8 @@
       {
         "title": "LeravelJsonDatabase Manager",
         "icon": "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
-        "file": "?admin&route=tool&tool=leraveljsondb",
-        "type": "experiment",
+        "file": "leraveljsondb",
+        "type": "experimentInt",
         "experiment": "ljsondbeditor_08_23",
         "perm": "TOOL_LJSONDB_MANAGER"
       },

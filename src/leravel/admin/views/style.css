@@ -541,7 +541,7 @@ button {
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 4px;
-  padding: 10px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -555,7 +555,7 @@ button {
 
 .alert-error {
   background-color: #fd9696;
-  border: 1px solid #ff9999;
+  border: 1px solid #ff6464;
   border-radius: 4px;
 }
 
@@ -604,12 +604,15 @@ button {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 0;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.700);
 }
 
 .alert div p {
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.700);
 }
 
 canvas {
@@ -845,4 +848,56 @@ details summary {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+}
+header div .dropdown {
+  margin-right: 15px;
+}
+header div .dropdown p {
+  cursor: pointer;
+  margin: 0;
+  margin-right: 20px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown img {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f5f5f5;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.61);
+  z-index: 9999;
+  right: 0;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 3px 4px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #cccccc;
+  text-decoration: underline;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
 }
