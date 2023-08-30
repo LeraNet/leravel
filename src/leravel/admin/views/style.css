@@ -849,11 +849,12 @@ details summary {
   align-items: center;
   gap: 10px;
 }
+
 header div .dropdown {
   margin-right: 15px;
 }
+
 header div .dropdown p {
-  cursor: pointer;
   margin: 0;
   margin-right: 20px;
 }
