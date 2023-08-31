@@ -1,8 +1,8 @@
-<?php 
+<?php
 hasAccess("UPDATER");
 ?>
 <?php
-require "include/toast.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/toast.php";
 
 $leravelInfo = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/leravel/json/leravel.json"), true);
 $leravelVersion = $leravelInfo["version"];
@@ -74,8 +74,8 @@ if (isset($_GET["success"])) {
 </head>
 
 <body>
-    <?php include "include/header.php" ?>
-    <?php include "include/sidebar.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/header.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/sidebar.php" ?>
     <div class="content">
         <h1><img src="<?= $icons["update"] ?>">Update</h1>
         <div class="tab-content">

@@ -5,6 +5,7 @@
         $fancyName[0] = strtoupper($fancyName[0]);
         echo $fancyName; ?></p> <img src="<?= $icons["dropdown"]?>">
             <div class="dropdown-content">
+                <a href="?admin&route=tool&tool=sidebarEditor">Sidebar Editor</a>
                 <a href="/?admin&route=logout">Logout</a>
             </div> 
         </div>

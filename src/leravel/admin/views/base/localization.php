@@ -3,7 +3,7 @@ hasAccess("LOCALIZATION_MANAGER");
 ?>
 <?php
 
-include "include/toast.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/toast.php";
 
 $languages = glob($_SERVER["DOCUMENT_ROOT"] . "/app/localization/*");
 $language = $_GET["language"] ?? null;
@@ -103,8 +103,8 @@ if(isset($_GET["error"])) {
 </head>
 
 <body>
-    <?php include "include/header.php" ?>
-    <?php include "include/sidebar.php" ?>
+<?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/header.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/sidebar.php" ?>
     <div class="content">
         <h1><img src="<?= $icons["localization"] ?>" draggable="false">Localization Manager</h1>
         <div class="tabs">

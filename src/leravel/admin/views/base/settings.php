@@ -3,7 +3,7 @@ hasAccess("SETTINGS_MANAGER");
 ?>
 <?php
 $settings = json_decode(file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/app/settings.json"), true);
-require "include/toast.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/toast.php";
 
 $vocabulary = array(
     "router" => array(
@@ -122,8 +122,8 @@ $currentTab = $_GET["tab"] ?? "settings.json";
 </head>
 
 <body>
-    <?php include "include/header.php" ?>
-    <?php include "include/sidebar.php" ?>
+<?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/header.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/sidebar.php" ?>
     <div class="content">
         <h1><img src="<?= $icons["settings"]?>">Settings</h1>
         <div class="tabs">

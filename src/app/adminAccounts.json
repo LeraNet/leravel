@@ -4,14 +4,16 @@
         "password": "test",
         "permissions": [
             "ROOT"
-        ]
+        ],
+        "sidebar": []
     },
     {
         "username": "test",
         "password": "test",
         "permissions": [
             "UPDATER"
-        ]
+        ],
+        "sidebar": []
     },
     {
         "username": "anan",
@@ -22,6 +24,7 @@
             "TOOL_ERROR_IDENTIFIER",
             "UPDATER",
             "TOOL_LJSONDB_MANAGER"
-        ]
+        ],
+        "sidebar": []
     }
 ]

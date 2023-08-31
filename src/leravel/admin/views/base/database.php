@@ -1,17 +1,18 @@
-<?php 
+<?php
 hasAccess("DATABASE_MANAGER");
 ?>
 <?php
 
 if ($Leravel["settings"]["database"]["enabled"] != "true" && $Leravel["settings"]["database"]["enabled"] != "1") : ?>
     <link rel="stylesheet" href="/?admin&route=css">
-    <?php include "include/header.php" ?>
-    <?php include "include/sidebar.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/header.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/sidebar.php" ?>
+
     <head>
         <title>Leravel Admin Database Manager</title>
     </head>
     <div class="content">
-        <h1><img src='<?= $icons["database"]?>' draggable="false">Database Manager</h1>
+        <h1><img src='<?= $icons["database"] ?>' draggable="false">Database Manager</h1>
         <div class="tab-content">
             <h3>Database is disabled!</h3>
             <p>Enable the database in the <a href="/?admin&route=settings">settings</a> to use the database manager.</p>
@@ -22,7 +23,7 @@ if ($Leravel["settings"]["database"]["enabled"] != "true" && $Leravel["settings"
 endif;
 $conn = $Leravel["conn"];
 
-include "include/toast.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/toast.php";
 
 $tables = $conn->query("SHOW TABLES");
 
@@ -124,10 +125,10 @@ if (isset($_GET["success"])) {
 </head>
 
 <body>
-    <?php include "include/header.php" ?>
-    <?php include "include/sidebar.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/header.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/sidebar.php" ?>
     <div class="content">
-        <h1><img src='<?= $icons["database"]?>' draggable="false">Database Manager</h1>
+        <h1><img src='<?= $icons["database"] ?>' draggable="false">Database Manager</h1>
         <div class="tabs">
             <?php
             while ($table = $tables->fetch_array()) {
@@ -206,7 +207,7 @@ if (isset($_GET["success"])) {
                     $pages = ceil($count / 50);
                     for ($i = 1; $i <= $pages; $i++) {
                         $selected = "";
-                        if(isset($_GET["page"]) && $i == $_GET["page"]){
+                        if (isset($_GET["page"]) && $i == $_GET["page"]) {
                             $selected = "selected";
                         }
                         echo "<option value='$i' $selected>$i</option>";

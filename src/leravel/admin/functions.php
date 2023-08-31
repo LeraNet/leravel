@@ -1,4 +1,17 @@
 <?php 
+$experimentsFile = $_SERVER["DOCUMENT_ROOT"] . '/leravel/admin/experiments.json';
+$modulesFile = $_SERVER["DOCUMENT_ROOT"] . "/app/modules.json";
+$activeExperiments = [];
+$activeModules = [];
+
+if (file_exists($experimentsFile)) {
+    $activeExperiments = json_decode(file_get_contents($experimentsFile), true);
+}
+
+if (file_exists($modulesFile)) {
+    $activeModules = json_decode(file_get_contents($modulesFile), true);
+}
+
 function redirect($path)
 {
     header("Location: /?admin&route=$path");
@@ -88,5 +101,23 @@ function checkLogin()
         unset($_SESSION["loggedIn"]);
         redirect("login");
         exit;
+    }
+}
+
+function isExperimentActive($experiment, $activeExperiments)
+{
+    if (in_array($experiment, $activeExperiments) && $activeExperiments[$experiment] == true) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isModuleActive($module, $activeModules)
+{
+    if (in_array($module, $activeModules) && $activeModules[$module] == true) {
+        return true;
+    } else {
+        return false;
     }
 }

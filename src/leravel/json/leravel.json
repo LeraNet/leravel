@@ -1,9 +1,1 @@
-{
-    "version": "2.1",
-    "statWeek": 31,
-    "lastMotdCheck": 1693417512,
-    "motd": "Enes batur kaza an\u0131",
-    "news": "[{\"title\":\"Leravel v2.1 is comming!\",\"content\":\"An insane update is comming \\ud83e\\udd2f\\ud83e\\udd2f\\ud83e\\udd2f\",\"date\":\"29.07.2023\"},{\"title\":\"Leravel v2.0!\",\"content\":\"Leravel CLI and other new stuff is here!\",\"date\":\"12.05.2023\"}]",
-    "lastUpdateCheck": 1693430391,
-    "latestVersion": "2.0"
-}
+{"version":"2.1","statWeek":31,"lastMotdCheck":1693505383,"motd":"Enes batur kaza an\u0131","news":"[{\"title\":\"Leravel v2.1 is comming!\",\"content\":\"An insane update is comming \\ud83e\\udd2f\\ud83e\\udd2f\\ud83e\\udd2f\",\"date\":\"29.07.2023\"},{\"title\":\"Leravel v2.0!\",\"content\":\"Leravel CLI and other new stuff is here!\",\"date\":\"12.05.2023\"}]","lastUpdateCheck":1693503458,"latestVersion":"2.0"}

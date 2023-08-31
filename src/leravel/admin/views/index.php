@@ -45,6 +45,16 @@ if (isset($_GET["loginsuccess"])) {
     <?php include "include/sidebar.php" ?>
     <div class="content">
         <h1>Welcome, <?= $_SESSION["username"] ?>!</h1>
+        <?php if (!isset($currentUser["sidebar"]) || empty($currentUser["sidebar"])) : ?>
+            <div class="alert alert-warning">
+                <div>
+                    <h1>Warning</h1>
+                    <p>It seems like you haven't set up your sidebar yet.</p>
+                </div>
+                <a href="/?admin&route=tool&tool=sidebarEditor" class="btn">Set up now</a>
+            </div>
+            <br>
+        <?php endif ?>
         <?php if (isset($leravelInfo["latestVersion"]) && $leravelInfo["latestVersion"] > $leravelVersion) { ?>
             <?php if (!isset($Leravel["settings"]["update"]["enabled"]) || $Leravel["settings"]["update"]["enabled"] == "1") { ?>
                 <div class="newVersionReminderBanner">

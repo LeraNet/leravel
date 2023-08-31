@@ -6,25 +6,8 @@ if (!get_loaded_extensions('gd') && !function_exists('gd_info')) {
 }
 
 require $_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/functions.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/variables.php";
 
-$loggedIn = $_SESSION['username'] ?? null;
-$route = $_GET['route'] ?? "/";
-
-$icons = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/icons.json"), true);
-$adminAccounts = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccounts.json"), true);
-$allTools = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/views/tools/tools.json"), true);
-
-$allPerms = [];
-$toolPerms = [];
-
-foreach ($allTools as $category) {
-    foreach ($category["tools"] as $tool) {
-        $toolPerms[$tool["file"]] = $tool["perm"];
-        if (!in_array($tool["perm"], $allPerms)) {
-            $allPerms[] = $tool["perm"];
-        }
-    }
-}
 
 switch ($route) {
     case "login":
@@ -32,12 +15,13 @@ switch ($route) {
             redirect("/");
             exit;
         }
-        include "views/login.php";
+        include "views/login/login.php";
         break;
+
     case "captcha":
-        if($_SERVER["REQUEST_METHOD"] == "GET") {
-            include "views/captcha.php";
-        }else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            include "views/login/captcha.php";
+        } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST["captcha"])) {
                 if ($_SESSION["captcha"] == $_POST["captcha"]) {
                     $_SESSION["captchaPassed"] = true;
@@ -50,36 +34,43 @@ switch ($route) {
             }
         }
         break;
-    case "stats":
-        checkLogin();
-        include "views/stats.php";
-        break;
+
     case "logout":
         checkLogin();
         session_destroy();
         redirect("login");
         exit;
-    case "css":
+
+    case "stats":
         checkLogin();
-        header("Content-Type: text/css");
-        include "views/style.css";
+        include "views/base/stats.php";
         break;
+
     case "database":
         checkLogin();
-        include "views/database.php";
+        include "views/base/database.php";
         break;
+
     case "localization":
         checkLogin();
-        include "views/localization.php";
+        include "views/base/localization.php";
         break;
+
     case "settings":
         checkLogin();
-        include "views/settings.php";
+        include "views/base/settings.php";
         break;
+
     case "plugins":
         checkLogin();
-        include "views/plugins.php";
+        include "views/base/plugins.php";
         break;
+
+    case "update":
+        checkLogin();
+        include "views/base/update.php";
+        break;
+
     case "tool":
         checkLogin();
         if (!isset($_GET["tool"])) {
@@ -89,16 +80,23 @@ switch ($route) {
                 redirect("noaccess");
                 exit;
             }
+            if (!file_exists($_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/tools/{$_GET["tool"]}.php")) {
+                include "views/404.php";
+                exit;
+            }
             include "views/tools/{$_GET["tool"]}.php";
         }
         break;
-    case "update":
-        checkLogin();
-        include "views/update.php";
-        break;
+
     case "noaccess":
         checkLogin();
         include "views/noaccess.php";
+        break;
+
+    case "css":
+        checkLogin();
+        header("Content-Type: text/css");
+        include "views/style.css";
         break;
     case "/":
         checkLogin();

@@ -1,133 +1,108 @@
 <?php
-
-$experimentsFile = $_SERVER["DOCUMENT_ROOT"] . '/leravel/admin/experiments.json';
-$modulesFile = $_SERVER["DOCUMENT_ROOT"] . "/app/modules.json";
-$activeExperiments = [];
-$activeModules = [];
-if (file_exists($experimentsFile)) {
-    $activeExperiments = json_decode(file_get_contents($experimentsFile), true);
-}
-
-if (file_exists($modulesFile)) {
-    $activeModules = json_decode(file_get_contents($modulesFile), true);
-}
-
-function isExperimentActive($experiment, $activeExperiments)
-{
-    if(in_array($experiment, $activeExperiments) && $activeExperiments[$experiment] == true){
-        return true;
-    }else{
-        return false;
+$navigation = $adminAccounts[array_search($_SESSION['username'], array_column($adminAccounts, 'username'))]['sidebar'] ?? [];
+$navigationTemp = [];
+$allToolsX = [];
+foreach ($allTools as $category) {
+    foreach ($category["tools"] as $tool) {
+        $allToolsX[] = $tool;
     }
 }
 
-function isModuleActive($module, $activeModules)
-{
-    if(in_array($module, $activeModules) && $activeModules[$module] == true){
-        return true;
-    }else{
-        return false;
+foreach ($navigation as $nav) {
+    $navX['enabled'] = true;
+
+    $navX["title"] = $allToolsX[array_search($nav, array_column($allToolsX, 'id'))]["title"];
+    $navX["icon"] = $allToolsX[array_search($nav, array_column($allToolsX, 'id'))]["icon"];
+    $navX["file"] = $allToolsX[array_search($nav, array_column($allToolsX, 'id'))]["file"];
+    $navX["type"] = $allToolsX[array_search($nav, array_column($allToolsX, 'id'))]["type"];
+    $navX["perm"] = $allToolsX[array_search($nav, array_column($allToolsX, 'id'))]["perm"];
+
+    if($navX["type"] == "experimentExt" || $navX["type"] == "experimentInt"){
+        $navX["experiment"] = $allToolsX[array_search($nav, array_column($allToolsX, 'id'))]["experiment"];
     }
+
+    $navX["uri"] = "";
+
+    switch ($navX["type"]) {
+        case "ext":
+            $navX["uri"] = $navX["file"];
+            break;
+        case "int":
+            $navX["uri"] = "?admin&route=tool&tool=" . $navX["file"];
+            break;
+        case "experimentExt":
+            $navX["uri"] = $navX["file"];
+            break;
+        case "experimentInt":
+            $navX["uri"] = "?admin&route=tool&tool=" . $navX["file"];
+            break;
+    }
+
+    $navigationTemp[] = $navX;
 }
 
-$navigation = [
-    "Home" => [
-        "title" => "Home",
-        "icon" => "home",
-        "uri" => "/?admin&route=/",
-        "enabled" => true,
-        "perm" => "NONE"
-    ],
-    "Database" => [
-        "title" => "Database",
-        "icon" => "database",
-        "uri" => "/?admin&route=database",
-        "enabled" => true,
-        "perm" => "DATABASE_MANAGER"
-    ],
-    "Localization" => [
-        "title" => "Localization",
-        "icon" => "localization",
-        "uri" => "/?admin&route=localization",
-        "enabled" => true,
-        "perm" => "LOCALIZATION_MANAGER"
-    ],
-    "Stats" => [
-        "title" => "Stats",
-        "icon" => "stats",
-        "uri" => "/?admin&route=stats",
-        "enabled" => true,
-        "perm" => "STATS"
-    ],
-    "Plugins" => [
-        "title" => "Plugins",
-        "icon" => "plugins",
-        "uri" => "/?admin&route=plugins",
-        "enabled" => false,
-        "experiment" => "pluginsmanager_07_23",
-        "perm" => "PLUGINS_MANAGER"
-    ],
-    "Tools" => [
-        "title" => "Tools",
-        "icon" => "tools",
-        "uri" => "/?admin&route=tool",
-        "enabled" => true,
-        "perm" => "NONE"
-    ],
-    "Settings" => [
-        "title" => "Settings",
-        "icon" => "settings",
-        "uri" => "/?admin&route=settings",
-        "enabled" => true,
-        "perm" => "SETTINGS_MANAGER"
-    ],
-    "Update" => [
-        "title" => "Update",
-        "icon" => "update",
-        "uri" => "/?admin&route=update",
-        "enabled" => true,
-        "perm" => "UPDATER"
-    ]
-];
+$navigation = $navigationTemp;
 ?>
 
 <div class="sidebar">
     <ul>
+        <li>
+            <a href="?admin">
+                <img src="<?= $icons["home"] ?>" draggable="false">
+                Home
+            </a>
+        </li>
         <?php foreach ($navigation as $itemKey => $item) : ?>
             <?php
             $isEnabled = $item['enabled'];
             if (isset($item['experiment']) && isExperimentActive($item['experiment'], $activeExperiments) == true) {
                 $isEnabled = true;
             }
+
+            if(checkPerm($item["perm"]) == false){
+                $isEnabled = false;
+            }
             ?>
 
             <?php if ($isEnabled && checkPerm($item["perm"])) : ?>
                 <li>
                     <a href="<?= $item['uri'] ?>">
-                        <img src="<?= $icons[$item['icon']] ?>" draggable="false">
+                        <img src="<?= $item['icon'] ?>" draggable="false">
                         <?= $item['title'] ?>
                     </a>
                 </li>
             <?php endif; ?>
         <?php endforeach; ?>
+        <li>
+            <a href="?admin&route=tool">
+                <img src="<?= $icons["tools"] ?>" draggable="false">
+                Tools
+            </a>
+        </li>
     </ul>
 </div>
 
 <div class="mobile-sidebar">
     <select name="" id="selectPage" onchange="navigate()">
         <option value="">Select Page</option>
+        <option value="?admin">Home</option>
         <?php foreach ($navigation as $itemKey => $item) : ?>
             <?php
             $isEnabled = $item['enabled'];
-            if (isset($item['experiment']) && !empty($item['experiment'])) {
-                $isEnabled = $isEnabled && isExperimentActive($item['experiment'], $activeExperiments);
+            if (isset($item['experiment']) && isExperimentActive($item['experiment'], $activeExperiments) == true) {
+                $isEnabled = true;
+            }
+
+            if(checkPerm($item["perm"]) == false){
+                $isEnabled = false;
             }
             ?>
 
-            <?php if ($isEnabled) : ?>
+            <?php if ($isEnabled && checkPerm($item["perm"])) : ?>
                 <option value="<?= $item['uri'] ?>"><?= $item['title'] ?></option>
             <?php endif; ?>
         <?php endforeach; ?>
+        <option value="?admin&route=tool">Tools</option>
     </select>
 </div>
 
@@ -140,4 +115,4 @@ $navigation = [
     }
 </script>
 
-<?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/checkUpdate.php" ?>
+<?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/checkUpdate.php" ?>

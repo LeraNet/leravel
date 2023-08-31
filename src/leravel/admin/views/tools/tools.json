@@ -1,9 +1,32 @@
 [
   {
+    "title": "User Preferences",
+    "icon": "https://img.icons8.com/?size=512&id=kDoeg22e5jUY&format=png",
+    "tools": [
+      {
+        "id" : "USER_SIDEBAR_EDITOR",
+        "title": "Sidebar Editor",
+        "icon": "https://img.icons8.com/?size=512&id=X78gBGIrZrTl&format=png",
+        "file": "sidebarEditor",
+        "type": "int",
+        "perm": "NONE"
+      },
+      {
+        "id" : "USER_PROFILE",
+        "title": "User Profile",
+        "icon": "https://img.icons8.com/?size=512&id=IerOpHeUt2OH&format=png",
+        "file": "userprofile",
+        "type": "int",
+        "perm": "NONE"
+      }
+    ]
+  },
+  {
     "title": "Base",
     "icon": "https://img.icons8.com/?size=512&id=wJVDOwCZqokW&format=png",
     "tools": [
       {
+        "id": "BASE_DATABASE_MANAGER",
         "title": "Database Manager",
         "icon": "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
         "file": "?admin&route=database",
@@ -11,6 +34,7 @@
         "perm": "DATABASE_MANAGER"
       },
       {
+        "id": "BASE_LOCALIZATON_MANAGER",
         "title": "Localization Manager",
         "icon": "https://img.icons8.com/?size=512&id=9m2yplxz2fr3&format=png",
         "file": "?admin&route=localization",
@@ -18,6 +42,7 @@
         "perm": "LOCALIZATION_MANAGER"
       },
       {
+        "id": "BASE_PLUGINS_MANAGER",
         "title": "Plugins Manager",
         "icon": "https://img.icons8.com/?size=512&id=LV1toaPaA7ia&format=png",
         "file": "?admin&route=plugins",
@@ -26,6 +51,7 @@
         "perm": "PLUGINS_MANAGER"
       },
       {
+        "id": "BASE_MODULES_MANAGER",
         "title": "Modules Manager",
         "icon": "https://img.icons8.com/?size=512&id=jzaaE6lUq9fx&format=png",
         "file": "modules",
@@ -33,6 +59,7 @@
         "perm": "TOOL_MODULES_MANAGER"
       },
       {
+        "id": "BASE_EXPERIMENTS_MANAGER",
         "title": "Experiments Manager",
         "icon": "https://img.icons8.com/?size=512&id=XO5nRSypAbfH&format=png",
         "file": "experiments",
@@ -40,12 +67,15 @@
         "perm": "TOOL_EXPERIMENTS_MANAGER"
       },
       {
+        "id": "BASE_SETTINGS_MANAGER",
         "title": "Settings Manager",
         "icon": "https://img.icons8.com/?size=512&id=s5NUIabJrb4C&format=png",
         "file": "?admin&route=settings",
         "type":  "ext",
         "perm": "SETTINGS_MANAGER"
-      },{
+      },
+      {
+        "id": "BASE_USERS_MANAGER",
         "title": "Users Manager",
         "icon": "https://img.icons8.com/?size=512&id=Oyh4DCshbhyf&format=png",
         "file": "users",
@@ -53,6 +83,7 @@
         "perm": "ROOT"
       },
       {
+        "id": "BASE_ERROR_IDENTIFIER",
         "title": "Error Identifier",
         "icon": "https://img.icons8.com/?size=512&id=4Ywlu1XtAw14&format=png",
         "file": "erridentify",
@@ -60,6 +91,7 @@
         "perm": "TOOL_ERROR_IDENTIFIER"
       },
       {
+        "id": "BASE_UPDATER",
         "title": "Updater",
         "icon": "https://img.icons8.com/?size=512&id=dkvPGMU3MKpu&format=png",
         "file": "?admin&route=update",
@@ -73,6 +105,7 @@
     "icon": "https://img.icons8.com/?size=512&id=YXWkZzb4J3aD&format=png",
     "tools": [
       {
+        "id": "MISC_LERAVELJSONDB_MANAGER",
         "title": "LeravelJsonDatabase Manager",
         "icon": "https://img.icons8.com/?size=512&id=RXrON5kyN96A&format=png",
         "file": "leraveljsondb",
@@ -81,6 +114,7 @@
         "perm": "TOOL_LJSONDB_MANAGER"
       },
       {
+        "id": "MISC_STATIC_SITE_GENERATOR",
         "title": "Static Site Generator",
         "icon": "https://img.icons8.com/?size=512&id=QwEwqmJDk4Za&format=png",
         "file": "staticSiteGenerator",

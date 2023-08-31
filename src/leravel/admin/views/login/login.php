@@ -1,6 +1,6 @@
 <?php
 
-include "include/toast.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/toast.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["username"], $_POST["password"])) {
@@ -224,12 +224,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h2>Login to Leravel Admin</h2>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
-        <?php if ($Leravel["settings"]["admin"]["captcha"] == "1" || $Leravel["settings"]["admin"]["captcha"] == "true") : ?>
-            <div class="leracaptcha">
-                <p onclick="document.querySelector('dialog').showModal()">LeraCaptcha</p>
-                <button type="button" onclick="document.querySelector('dialog').showModal()" id="captchabutton">❌</button>
-            </div>
-        <?php endif; ?>
+        <div class="leracaptcha">
+            <p onclick="document.querySelector('dialog').showModal()">LeraCaptcha</p>
+            <button type="button" onclick="document.querySelector('dialog').showModal()" id="captchabutton">❌</button>
+        </div>
         <input type="submit" value="Login">
     </form>
     <div class="half">

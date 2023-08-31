@@ -113,8 +113,8 @@ if ($render == "true") {
 </head>
 
 <body>
-    <?php include "include/header.php" ?>
-    <?php include "include/sidebar.php" ?>
+<?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/header.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/sidebar.php" ?>
     <div class="content">
         <h1><img src="<?= $icons["stats"] ?>" draggable="off">Statistics Visualizer</h1>
         <div class="tab-content">
