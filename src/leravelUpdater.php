@@ -151,7 +151,7 @@ if (isset($_POST["update"]) && $_POST["update"] == "true") {
             <a href="/?admin&route=/&noupdate">admin</a>
         </div>
     </header>
-    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/checkUpdate.php" ?>
+    <?php include $_SERVER["DOCUMENT_ROOT"] . "/leravel/admin/views/include/checkUpdate.php" ?>
     <div class="content">
         <h1>Leravel Updater</h1>
         <div class="tab-content">

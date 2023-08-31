@@ -5,7 +5,9 @@
         "permissions": [
             "ROOT"
         ],
-        "sidebar": []
+        "sidebar": [
+            "BASE_SETTINGS_MANAGER"
+        ]
     },
     {
         "username": "test",
@@ -21,10 +23,10 @@
         "permissions": [
             "DATABASE_MANAGER",
             "SETTINGS_MANAGER",
-            "TOOL_ERROR_IDENTIFIER",
-            "UPDATER",
-            "TOOL_LJSONDB_MANAGER"
+            "UPDATER"
         ],
-        "sidebar": []
+        "sidebar": [
+            "USER_PROFILE"
+        ]
     }
 ]

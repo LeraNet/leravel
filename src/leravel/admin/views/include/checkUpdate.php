@@ -6,7 +6,7 @@ if(!isset($leravelInfo["lastUpdateCheck"])){
     $leravelInfo["lastUpdateCheck"] = 0;
 }
 
-if (time() - $leravelInfo["lastUpdateCheck"] > 3600) {
+if (time() - $leravelInfo["lastUpdateCheck"] > 86400) {
 
     $url = "https://api.github.com/repos/lera2od/leravel/releases/latest";
 

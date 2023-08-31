@@ -6,6 +6,7 @@ $route = $_GET['route'] ?? "/";
 $icons = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/icons.json"), true);
 $adminAccounts = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/adminAccounts.json"), true);
 $allTools = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/leravel/admin/views/tools/tools.json"), true);
+$allToolsList = [];
 $currentUser = isset($_SESSION["username"]) ? $adminAccounts[array_search($_SESSION['username'], array_column($adminAccounts, 'username'))] : null;
 
 $allPerms = [];
@@ -17,5 +18,11 @@ foreach ($allTools as $category) {
         if (!in_array($tool["perm"], $allPerms)) {
             $allPerms[] = $tool["perm"];
         }
+    }
+}
+
+foreach ($allTools as $category) {
+    foreach ($category["tools"] as $tool) {
+        $allToolsList[] = $tool;
     }
 }

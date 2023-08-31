@@ -518,6 +518,25 @@ button {
   transition: all 0.2s ease-in-out;
 }
 
+button:disabled {
+  background-color: #cccccc;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  color: #333;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  margin-bottom: 0;
+  padding: 6px 12px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: not-allowed;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 5px;
@@ -901,4 +920,78 @@ header div .dropdown p {
 
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+.sidebarEdit-item {
+  position: relative;
+}
+
+.sidebarEdit-item #content, .sidebarEdit-item-content {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  border-radius: 15px;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: #333;
+  margin: 1px;
+  margin-left: 60px;
+}
+
+.sidebarEdit-item #content img, .sidebarEdit-item-content img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.sidebarEdit-item #remove {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sidebarEdit-item #up {
+  padding: 0;
+  position: absolute;
+  left: 50px;
+  top: 25%;
+  transform: translateY(-50%);
+}
+
+.sidebarEdit-item #down {
+  padding: 0;
+  position: absolute;
+  left: 50px;
+  top: 75%;
+  transform: translateY(-50%);
+}
+
+dialog {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  padding: 20px;
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#addMoreStuffidk {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.items {
+  position: relative;
 }
